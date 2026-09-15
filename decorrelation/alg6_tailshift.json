@@ -1,0 +1,37 @@
+{
+ "seed": 20260801,
+ "note": "ALG-6 tail-shift only; predicted_from_theta undefined on disjoint corpora",
+ "threshold_predeclared": 0.6,
+ "corpora": {
+  "adaptive2": {
+   "n_agents": 20,
+   "n_static_agents": 20,
+   "n_adaptive_payloads": 60,
+   "n_static_payloads": 342,
+   "top_decile_theta_adaptive": 0.3233333333333333,
+   "top_decile_theta_static": 0.4633571428571428,
+   "tail_shift": -0.1400238095238095,
+   "mean_theta_adaptive": 0.07666666666666666,
+   "mean_theta_static": 0.09282163742690058,
+   "dASR": -0.016154970760233922
+  },
+  "adaptive3": {
+   "n_agents": 20,
+   "n_static_agents": 20,
+   "n_adaptive_payloads": 75,
+   "n_static_payloads": 342,
+   "top_decile_theta_adaptive": 0.3334375,
+   "top_decile_theta_static": 0.41800000000000004,
+   "tail_shift": -0.08456250000000004,
+   "mean_theta_adaptive": 0.06609999999999999,
+   "mean_theta_static": 0.07524122807017543,
+   "dASR": -0.009141228070175436
+  }
+ },
+ "verdict": "not tail-targeting: the tail shift is negative in both corpora, so the authored payloads produced an EASIER upper tail than the natural corpus. The predeclared 60% attribution verdict is not computable, since predicted_from_theta requires a shared payload space the corpora do not have.",
+ "corpus_naming": {
+  "adaptive2": "grammar v1 (60 payloads)",
+  "adaptive3": "grammar v2 (75 payloads)",
+  "note": "file numbering is offset from the paper's corpus names; verified against adaptive_asr per composition"
+ }
+}

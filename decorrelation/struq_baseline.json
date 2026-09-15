@@ -1,0 +1,27 @@
+{
+ "n": 60,
+ "struq_asr": {
+  "llama": 20,
+  "qwen": 1,
+  "mistral": 24,
+  "gemma": 39
+ },
+ "struq_defeats": 7,
+ "phi": {
+  "point": 0.38516444325982163,
+  "lo": 0.16192558718471017,
+  "hi": 0.5854812407564532,
+  "undefined_frac": 0.0,
+  "n_defined": 10000
+ },
+ "adaptive_draws": [
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2
+ ]
+}

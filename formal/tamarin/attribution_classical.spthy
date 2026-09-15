@@ -1,0 +1,93 @@
+/*
+  PQ-BFT-Prov — Tamarin model, CLASSICAL instance (Task 2, RQ1 symbolic side).
+  Mission mis_01KVS3YJBEHQ3GD6Y5N6ZTJTSD.
+
+  Identical chain to attribution_pqc.spthy, BUT the agent signs with a CLASSICAL signature
+  (RSA/ECDSA abstraction) and the quantum adversary is given a Shor capability:
+  from the PUBLIC key pkC(skC) alone it recovers the secret skC. This is the primitive
+  relativization of §4.2: classical-signature unforgeability is DROPPED.
+
+  Expected result: P1/P3 are FALSIFIED with an attack trace (the adversary forges a signature
+  on an intent the agent never decided, drives an actuation, and mis-attributes it to the honest
+  agent). The exists-trace lemma `forgery_reachable` is VERIFIED (the attack trace exists).
+  This mirrors, symbolically, the concrete Qiskit Aer Shor-forgery of Task 4 (RQ1).
+*/
+
+theory PQ_BFT_Prov_attribution_classical
+begin
+
+functions: pkC/1, signC/2, verifyC/3, true/0
+equations: verifyC(signC(m, sk), m, pkC(sk)) = true
+
+restriction Equality:
+    "All a b #i. Eq(a, b) @ i ==> a = b"
+
+restriction UniqueCommitPerNonce:
+    "All n #i #j. UniqueCommit(n) @ i & UniqueCommit(n) @ j ==> #i = #j"
+
+/* ---- Honest agent key registration (classical keypair) ----
+   Every classical public key is paired with a !ShorOracle fact: a quantum adversary CAN invert
+   it. (No such fact exists in the PQC model -> ML-DSA keys are not recoverable.) */
+rule Register_Agent:
+    [ Fr(~skA) ]
+  --[ RegisterAgent($A, pkC(~skA)) ]->
+    [ !Ltk($A, ~skA), !Pk($A, pkC(~skA)),
+      !ShorOracle( pkC(~skA), ~skA ),
+      Out(pkC(~skA)) ]
+
+/* *** QUANTUM ADVERSARY: Shor key recovery against the CLASSICAL scheme ***
+   Given a public key known to the adversary, the Shor oracle returns the matching secret.
+   skC is derivable from the !ShorOracle premise (wellformed; no unintended pattern matching).
+   Abstracts Shor recovering the private key by factoring/dlog. No analogue exists for ML-DSA. */
+rule Shor_break_classical:
+    [ In( pk ), !ShorOracle( pk, skC ) ]
+  --[ ShorForge( skC ) ]->
+    [ Out( skC ) ]
+
+/* ---- Agent decides actuation intent and signs it (classically) ---- */
+rule Agent_Decide:
+    [ !Ltk($A, ~skA), Fr(~n) ]
+  --[ AgentDecide($A, <$dev, $cmd, ~n>) ]->
+    [ Out( <$A, $dev, $cmd, ~n, signC(<$dev, $cmd, ~n>, ~skA)> ) ]
+
+/* ---- Verified guard: same as PQC instance ---- */
+rule Guard_Approve_and_Commit:
+    [ In( <$A, $dev, $cmd, ~n, sig> ), !Pk($A, pkA) ]
+  --[ Eq( verifyC(sig, <$dev, $cmd, ~n>, pkA), true ),
+      UniqueCommit(~n),
+      PolicyApprove($A, <$dev, $cmd, ~n>),
+      ProvenanceCommit($A, <$dev, $cmd, ~n>) ]->
+    [ Actuatable($A, <$dev, $cmd, ~n>, sig, pkA),
+      !LogEntry($A, <$dev, $cmd, ~n>, sig) ]
+
+rule Verifier_Actuate:
+    [ Actuatable($A, x, sig, pkA) ]
+  --[ Eq( verifyC(sig, x, pkA), true ),
+      Actuate($A, x) ]->
+    [ ]
+
+/* =========================  SECURITY PROPERTIES  ========================= */
+
+lemma actuation_reachable: exists-trace
+    "Ex A x #i. Actuate(A, x) @ i"
+
+// P1 — Authentication. EXPECTED: FALSIFIED (Shor lets the adversary forge a fresh actuation).
+lemma P1_authentication: all-traces
+    "All A x #i. Actuate(A, x) @ i
+        ==> (Ex #j. AgentDecide(A, x) @ j & j < i)"
+
+// P3 — Injective attribution-binding. EXPECTED: FALSIFIED (mis-attribution to the honest agent).
+lemma P3_injective_attribution: all-traces
+    "(All A x #i1 #i2. Actuate(A, x) @ i1 & Actuate(A, x) @ i2 ==> #i1 = #i2)
+     & (All A x #i. Actuate(A, x) @ i
+            ==> (Ex #j. AgentDecide(A, x) @ j & j < i
+                 & (All A2 #j2. AgentDecide(A2, x) @ j2 ==> A2 = A)))"
+
+// The forgery/mis-attribution attack trace itself. EXPECTED: VERIFIED (the attack is reachable):
+// an actuation attributed to honest A on intent x that A never decided.
+lemma forgery_reachable: exists-trace
+    "Ex A x #i. Actuate(A, x) @ i
+        & (not (Ex #j. AgentDecide(A, x) @ j))
+        & (Ex skf #s. ShorForge(skf) @ s & s < i)"
+
+end

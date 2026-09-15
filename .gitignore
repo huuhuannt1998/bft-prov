@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Tamarin / ProVerif build artifacts
+*.aux
+formal/**/output/
+*.tamarin-proof
+*.spthy.proof
+
+# liboqs build
+provenance/crypto/_build/
+*.so
+*.dylib
+
+# Home Assistant runtime
+actuation/homeassistant/.storage/
+actuation/homeassistant/*.log
+actuation/homeassistant/.cloud/
+actuation/homeassistant/deps/
+
+# Local env / secrets
+.env
+env/versions.local.lock
+
+# Scratch
+scratch/*
+!scratch/.gitkeep
+
+# OS
+.DS_Store
+_apalache-out/
+x-*.tla
+*.itf.json
+
+# Manuscript build artifacts. The manuscript tree carries its own .gitignore, which matches at any
+# depth and so covers paper/ and supplementary/ since the split; only texput.log lands out here.
+texput.log

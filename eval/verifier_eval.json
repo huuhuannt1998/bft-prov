@@ -1,0 +1,516 @@
+{
+  "n_cases": 42,
+  "n_rules": 24,
+  "correct": 42,
+  "results": [
+    {
+      "id": "LS1-unsafe",
+      "family": "LS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "LS1"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS1-safe",
+      "family": "LS",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "LS2-unsafe",
+      "family": "LS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "LS2"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS2-manip",
+      "family": "LS",
+      "kind": "attacker-manipulated context",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "LS2"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS3-unsafe",
+      "family": "LS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "LS3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS3-boundary",
+      "family": "LS",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "LS4-escalate",
+      "family": "LS",
+      "kind": "legitimate exception",
+      "expect": "escalate",
+      "got": "escalate",
+      "rules": [
+        "LS4"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS5-unsafe",
+      "family": "LS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "LS5"
+      ],
+      "ok": true
+    },
+    {
+      "id": "LS5-safe",
+      "family": "LS",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AC1-unsafe",
+      "family": "AC",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC1"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC1-crossdev",
+      "family": "AC",
+      "kind": "cross-device conflict",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC1"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC2-unsafe",
+      "family": "AC",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC2",
+        "AC7"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC2-safe",
+      "family": "AC",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AC2-exception",
+      "family": "AC",
+      "kind": "legitimate exception",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AC3-night",
+      "family": "AC",
+      "kind": "boundary",
+      "expect": "escalate",
+      "got": "escalate",
+      "rules": [
+        "AC3",
+        "AC8"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC3-day",
+      "family": "AC",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AC4-rate",
+      "family": "AC",
+      "kind": "replay / duplicate",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC4"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC4-boundary",
+      "family": "AC",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AC5-guest",
+      "family": "AC",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC5"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AC6-disarm",
+      "family": "AC",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AC6"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP1-unsafe",
+      "family": "AP",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AP1"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP1-boundary",
+      "family": "AP",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AP2-fault",
+      "family": "AP",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AP2",
+        "SF1",
+        "SF2"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP2-ok",
+      "family": "AP",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "AP3-away",
+      "family": "AP",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AP3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP4-duration",
+      "family": "AP",
+      "kind": "boundary",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AP4"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP5-interlock",
+      "family": "AP",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "AP5"
+      ],
+      "ok": true
+    },
+    {
+      "id": "AP5-ok",
+      "family": "AP",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "SI1-stale",
+      "family": "SI",
+      "kind": "stale context",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "SI1",
+        "SF3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SI1-fresh",
+      "family": "SI",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "SI2-conflict",
+      "family": "SI",
+      "kind": "conflicting sensors",
+      "expect": "escalate",
+      "got": "escalate",
+      "rules": [
+        "SI2"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SI3-missing-critical",
+      "family": "SI",
+      "kind": "missing context",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "SI3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SI3-missing-high",
+      "family": "SI",
+      "kind": "missing context",
+      "expect": "escalate",
+      "got": "escalate",
+      "rules": [
+        "SI3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SI4-unauth-state",
+      "family": "SI",
+      "kind": "attacker-manipulated context",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "SI4"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SI4-auth-state",
+      "family": "SI",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "TS1-night",
+      "family": "TS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "TS1"
+      ],
+      "ok": true
+    },
+    {
+      "id": "TS1-day",
+      "family": "TS",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "TS2-cooldown",
+      "family": "TS",
+      "kind": "replay / duplicate",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "TS2"
+      ],
+      "ok": true
+    },
+    {
+      "id": "TS2-boundary",
+      "family": "TS",
+      "kind": "boundary",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "TS3-prereq",
+      "family": "TS",
+      "kind": "clearly unsafe",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "TS3"
+      ],
+      "ok": true
+    },
+    {
+      "id": "TS3-met",
+      "family": "TS",
+      "kind": "clearly safe",
+      "expect": "permit",
+      "got": "permit",
+      "rules": [],
+      "ok": true
+    },
+    {
+      "id": "TS4-toggle",
+      "family": "TS",
+      "kind": "cross-device conflict",
+      "expect": "deny",
+      "got": "deny",
+      "rules": [
+        "TS4"
+      ],
+      "ok": true
+    }
+  ],
+  "false_permits": 0,
+  "false_denials": 0,
+  "latency_ms": {
+    "mean": 0.6019994933333331,
+    "p50": 0.5542709999999951,
+    "p95": 0.850208000000019,
+    "subprocess_cold_ms": 14.201291999999977
+  },
+  "by_family": {
+    "LS": {
+      "n": 9,
+      "ok": 9
+    },
+    "AC": {
+      "n": 11,
+      "ok": 11
+    },
+    "AP": {
+      "n": 8,
+      "ok": 8
+    },
+    "SI": {
+      "n": 7,
+      "ok": 7
+    },
+    "TS": {
+      "n": 7,
+      "ok": 7
+    }
+  },
+  "by_kind": {
+    "attacker-manipulated context": {
+      "n": 2,
+      "ok": 2
+    },
+    "boundary": {
+      "n": 8,
+      "ok": 8
+    },
+    "clearly safe": {
+      "n": 8,
+      "ok": 8
+    },
+    "clearly unsafe": {
+      "n": 14,
+      "ok": 14
+    },
+    "conflicting sensors": {
+      "n": 1,
+      "ok": 1
+    },
+    "cross-device conflict": {
+      "n": 2,
+      "ok": 2
+    },
+    "legitimate exception": {
+      "n": 2,
+      "ok": 2
+    },
+    "missing context": {
+      "n": 2,
+      "ok": 2
+    },
+    "replay / duplicate": {
+      "n": 2,
+      "ok": 2
+    },
+    "stale context": {
+      "n": 1,
+      "ok": 1
+    }
+  }
+}

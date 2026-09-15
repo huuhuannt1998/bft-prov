@@ -1,0 +1,42 @@
+{
+ "label": "screen",
+ "families": [
+  "gemma",
+  "granite",
+  "llama",
+  "mistral",
+  "phi",
+  "qwen"
+ ],
+ "arm_swing_pp": 0.0,
+ "S_A_pass": false,
+ "cross_family_rho": {
+  "gemma|granite": 0.4154272288769995,
+  "gemma|llama": -0.21076037790119656,
+  "gemma|mistral": NaN,
+  "gemma|phi": 0.37194258691011833,
+  "gemma|qwen": NaN,
+  "granite|llama": -0.5969699982856587,
+  "granite|mistral": NaN,
+  "granite|phi": -0.017597160381069555,
+  "granite|qwen": NaN,
+  "llama|mistral": NaN,
+  "llama|phi": 0.7055168415725265,
+  "llama|qwen": NaN,
+  "mistral|phi": NaN,
+  "mistral|qwen": NaN,
+  "phi|qwen": NaN
+ },
+ "min_rho": -0.5969699982856587,
+ "S_B_pass": true,
+ "screen_pass": true,
+ "capability": {
+  "grammar_id": "G2027-S5",
+  "grammar_hash": "8bde2955a9e82104",
+  "n_agents": 12,
+  "n_payloads": 100,
+  "reps": 1,
+  "authored": true,
+  "preregistration": "PREREGISTRATION_STAGE5.md"
+ }
+}

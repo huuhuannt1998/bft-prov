@@ -1,0 +1,61 @@
+/*
+  PQ-BFT-Prov — BUFF FIXED model (Task 3 ↔ Task 2 link).
+  Same exclusive-ownership FAILURE equation as attribution_buff_sensitivity.spthy, but the agent
+  applies the BUFF-style transform: the signer's public key is BOUND INTO the signed payload
+  (abstracts signing H(pk ‖ m); ML-DSA already folds tr = H(pk) into its message digest), and the
+  guard credits a key only if (i) the sig verifies under it AND (ii) it equals the key bound in the
+  signed payload.
+
+  EXPECTED: VERIFIED — every credited key actually signed, despite the EO-failing primitive.
+  The transform restores exclusive-ownership-in-context: the candidate mitigation/sub-contribution.
+*/
+
+theory PQ_BFT_Prov_buff_fixed
+begin
+
+functions: pkQ/1, signQ/2, verifyQ/3, true/0, spoofpk/2
+equations:
+    verifyQ(signQ(m, sk), m, pkQ(sk)) = true,
+    verifyQ(sig, m, spoofpk(sig, m)) = true        // primitive STILL lacks exclusive ownership
+
+restriction Equality:
+    "All a b #i. Eq(a, b) @ i ==> a = b"
+
+rule Register_Agent:
+    [ Fr(~skA) ]
+  --[ RegisterAgent($A, pkQ(~skA)) ]->
+    [ !Ltk($A, ~skA), !Pk($A, pkQ(~skA)), Out(pkQ(~skA)) ]
+
+rule Register_Chosen_Key:
+    [ In( pk ) ]
+  --[ RegisterAgent($E, pk) ]->
+    [ !Pk($E, pk) ]
+
+// BUFF TRANSFORM: the signer binds its OWN public key pkQ(~skA) into the signed payload.
+// SignedBy records the true signer key against the SAME bound message the guard will check.
+rule Agent_Decide:
+    [ !Ltk($A, ~skA), Fr(~n) ]
+  --[ AgentDecide($A, <$dev, $cmd, ~n>),
+      SignedBy( pkQ(~skA), <pkQ(~skA), $dev, $cmd, ~n>, signQ(<pkQ(~skA), $dev, $cmd, ~n>, ~skA) ) ]->
+    [ Out( <$A, $dev, $cmd, ~n, pkQ(~skA), signQ(<pkQ(~skA), $dev, $cmd, ~n>, ~skA)> ) ]
+
+// Guard credits pkClaimed only if (i) sig verifies under it AND (ii) the key bound inside the
+// signed payload equals it. CreditKey logs (key, bound-message, sig).
+rule Guard_Approve_and_Commit:
+    [ In( <$Claimed, $dev, $cmd, ~n, pkInMsg, sig> ), !Pk($Claimed, pkClaimed) ]
+  --[ Eq( verifyQ(sig, <pkInMsg, $dev, $cmd, ~n>, pkClaimed), true ),
+      Eq( pkInMsg, pkClaimed ),                         // <-- BUFF consistency check
+      CreditKey( pkClaimed, <pkInMsg, $dev, $cmd, ~n>, sig ) ]->
+    [ ]
+
+
+
+// EXCLUSIVE-OWNERSHIP held fixed on the HONEST signature (m,sig): whoever the log
+// credits for that exact honest record must be the honest signer key.
+// EXPECTED: VERIFIED.
+lemma EO_honest_signature_uniquely_credited: all-traces
+    "All pkH m sig pkC #s #c.
+        SignedBy(pkH, m, sig) @ s & CreditKey(pkC, m, sig) @ c
+        ==> pkH = pkC"
+
+end

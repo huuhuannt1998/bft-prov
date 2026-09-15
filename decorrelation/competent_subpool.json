@@ -1,0 +1,161 @@
+{
+ "meta": {
+  "n_boot": 1000,
+  "estimator": "decorrelation.analyze_quorum.dependence_agent_cluster",
+  "note": "the paper's two-way agent x payload cluster bootstrap, re-run on sub-pools filtered by per-agent attack success; only pool membership changes"
+ },
+ "levels": [
+  {
+   "ceiling": null,
+   "n_agents": 65,
+   "pool_asr_mean": 0.243019943019943,
+   "pool_asr_max": 1.0,
+   "categories": {
+    "family-diverse, defense-diverse": {
+     "joint": 0.05898148148148148,
+     "indep": 0.05404696018256601,
+     "lift": 1.0913006260157294,
+     "n_pairs": 1400,
+     "lift_ci": [
+      1.0447437379039772,
+      1.183447406268325
+     ]
+    },
+    "family-diverse, same defense": {
+     "joint": 0.06469135802469135,
+     "indep": 0.05886654583176589,
+     "lift": 1.098949447612777,
+     "n_pairs": 350,
+     "lift_ci": [
+      1.0408156239038502,
+      1.2297277314760666
+     ]
+    },
+    "same family, defense-diverse": {
+     "joint": 0.08744146445295871,
+     "indep": 0.07621684623529576,
+     "lift": 1.1472721422113221,
+     "n_pairs": 290,
+     "lift_ci": [
+      1.0473471535735164,
+      1.3956122700382916
+     ]
+    }
+   }
+  },
+  {
+   "ceiling": 0.5,
+   "n_agents": 52,
+   "pool_asr_mean": 0.09051207077522866,
+   "pool_asr_max": 0.47368421052631576,
+   "categories": {
+    "family-diverse, defense-diverse": {
+     "joint": 0.011890172152730596,
+     "indep": 0.007782115956893406,
+     "lift": 1.5278842179418144,
+     "n_pairs": 878,
+     "lift_ci": [
+      1.307861576738199,
+      1.8664261004543305
+     ]
+    },
+    "family-diverse, same defense": {
+     "joint": 0.012709725703146756,
+     "indep": 0.008200524696786367,
+     "lift": 1.5498673771603249,
+     "n_pairs": 224,
+     "lift_ci": [
+      1.2939993265165073,
+      1.9427434572976514
+     ]
+    },
+    "same family, defense-diverse": {
+     "joint": 0.0177916264660904,
+     "indep": 0.007300403539132264,
+     "lift": 2.4370743850969556,
+     "n_pairs": 198,
+     "lift_ci": [
+      1.8393009168233636,
+      3.82869807002439
+     ]
+    }
+   }
+  },
+  {
+   "ceiling": 0.3,
+   "n_agents": 46,
+   "pool_asr_mean": 0.04860581405203831,
+   "pool_asr_max": 0.2777777777777778,
+   "categories": {
+    "family-diverse, defense-diverse": {
+     "joint": 0.003395585738539898,
+     "indep": 0.0019348552259423096,
+     "lift": 1.7549559744896088,
+     "n_pairs": 682,
+     "lift_ci": [
+      1.186536185668474,
+      2.5302194387375745
+     ]
+    },
+    "family-diverse, same defense": {
+     "joint": 0.0031789745682034545,
+     "indep": 0.0019140366695130113,
+     "lift": 1.660874432992071,
+     "n_pairs": 172,
+     "lift_ci": [
+      0.8955893506966432,
+      2.771280623505132
+     ]
+    },
+    "same family, defense-diverse": {
+     "joint": 0.011252697358393696,
+     "indep": 0.0037396286074258527,
+     "lift": 3.0090414155162355,
+     "n_pairs": 162,
+     "lift_ci": [
+      1.7646035616554527,
+      6.1126666524392785
+     ]
+    }
+   }
+  },
+  {
+   "ceiling": 0.2,
+   "n_agents": 43,
+   "pool_asr_mean": 0.0335463982954803,
+   "pool_asr_max": 0.16666666666666666,
+   "categories": {
+    "family-diverse, defense-diverse": {
+     "joint": 0.001696202281983768,
+     "indep": 0.0008187517050018263,
+     "lift": 2.071693129457342,
+     "n_pairs": 593,
+     "lift_ci": [
+      1.1602546609121263,
+      3.235614612156605
+     ]
+    },
+    "family-diverse, same defense": {
+     "joint": 0.0017184774802503334,
+     "indep": 0.0008130531891554176,
+     "lift": 2.1136101588082465,
+     "n_pairs": 152,
+     "lift_ci": [
+      0.9901481656306187,
+      3.795544502088379
+     ]
+    },
+    "same family, defense-diverse": {
+     "joint": 0.009622164157438513,
+     "indep": 0.0023925043554651353,
+     "lift": 4.021795879058216,
+     "n_pairs": 141,
+     "lift_ci": [
+      2.3234204715945794,
+      10.280929400660426
+     ]
+    }
+   }
+  }
+ ]
+}

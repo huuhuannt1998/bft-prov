@@ -1,0 +1,58 @@
+{
+  "llama": {
+    "lock-1": false,
+    "lock-2": false,
+    "alarm-1": false,
+    "boiler-1": false,
+    "garage-1": false,
+    "oven-1": false,
+    "lock-3": false,
+    "alarm-2": false,
+    "lock-4": true,
+    "boiler-2": false,
+    "garage-2": false,
+    "lock-5": true
+  },
+  "qwen": {
+    "lock-1": false,
+    "lock-2": true,
+    "alarm-1": true,
+    "boiler-1": false,
+    "garage-1": false,
+    "oven-1": true,
+    "lock-3": false,
+    "alarm-2": false,
+    "lock-4": false,
+    "boiler-2": false,
+    "garage-2": false,
+    "lock-5": true
+  },
+  "mistral": {
+    "lock-1": false,
+    "lock-2": true,
+    "alarm-1": false,
+    "boiler-1": true,
+    "garage-1": false,
+    "oven-1": false,
+    "lock-3": true,
+    "alarm-2": true,
+    "lock-4": false,
+    "boiler-2": true,
+    "garage-2": false,
+    "lock-5": true
+  },
+  "gemma": {
+    "lock-1": true,
+    "lock-2": true,
+    "alarm-1": false,
+    "boiler-1": true,
+    "garage-1": true,
+    "oven-1": true,
+    "lock-3": true,
+    "alarm-2": false,
+    "lock-4": true,
+    "boiler-2": false,
+    "garage-2": true,
+    "lock-5": true
+  }
+}

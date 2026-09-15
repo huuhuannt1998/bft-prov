@@ -1,0 +1,63 @@
+/*
+  PQ-BFT-Prov — BUFF SENSITIVITY model (Task 3 ↔ Task 2 link).
+  Isolates the dependence of attribution-binding on EXCLUSIVE OWNERSHIP (DEO).
+
+  A signature scheme LACKING exclusive ownership is modeled with the extra equation
+      verifyQ(sig, m, spoofpk(sig, m)) = true
+  i.e. for any (sig, m) an adversary can conjure a public key that ALSO verifies it — a
+  Duplicate-Signature Key Selection / key-substitution attack (with/without-exclusive-ownership
+  signature modeling à la Jackson, Cremers, Cohn-Gordon, Sasse, "Seems Legit", CCS 2019).
+
+  Property under test (exclusive ownership IN CONTEXT): every key the log CREDITS for a record
+  must be a key that ACTUALLY SIGNED that record's message. The agent does NOT bind its public
+  key into the signed payload (no BUFF transform).
+  EXPECTED: FALSIFIED — the honest agent's signature is credited to a spoofed key that never signed.
+*/
+
+theory PQ_BFT_Prov_buff_sensitivity
+begin
+
+functions: pkQ/1, signQ/2, verifyQ/3, true/0, spoofpk/2
+equations:
+    verifyQ(signQ(m, sk), m, pkQ(sk)) = true,
+    verifyQ(sig, m, spoofpk(sig, m)) = true        // <-- NO exclusive ownership
+
+restriction Equality:
+    "All a b #i. Eq(a, b) @ i ==> a = b"
+
+rule Register_Agent:
+    [ Fr(~skA) ]
+  --[ RegisterAgent($A, pkQ(~skA)) ]->
+    [ !Ltk($A, ~skA), !Pk($A, pkQ(~skA)), Out(pkQ(~skA)) ]
+
+// Anyone (incl. the adversary) may register a self-chosen public key — e.g. a spoofed one.
+rule Register_Chosen_Key:
+    [ In( pk ) ]
+  --[ RegisterAgent($E, pk) ]->
+    [ !Pk($E, pk) ]
+
+// Agent signs ONLY the intent (public key NOT bound in). SignedBy records the true signer key.
+rule Agent_Decide:
+    [ !Ltk($A, ~skA), Fr(~n) ]
+  --[ AgentDecide($A, <$dev, $cmd, ~n>),
+      SignedBy( pkQ(~skA), <$dev, $cmd, ~n>, signQ(<$dev, $cmd, ~n>, ~skA) ) ]->
+    [ Out( <$A, $dev, $cmd, ~n, signQ(<$dev, $cmd, ~n>, ~skA)> ) ]
+
+// Guard credits the key under which the sig verifies; CreditKey logs (key, message, sig).
+rule Guard_Approve_and_Commit:
+    [ In( <$Claimed, $dev, $cmd, ~n, sig> ), !Pk($Claimed, pkClaimed) ]
+  --[ Eq( verifyQ(sig, <$dev, $cmd, ~n>, pkClaimed), true ),
+      CreditKey( pkClaimed, <$dev, $cmd, ~n>, sig ) ]->
+    [ ]
+
+
+
+// EXCLUSIVE-OWNERSHIP held fixed on the HONEST signature (m,sig): whoever the log
+// credits for that exact honest record must be the honest signer key.
+// EXPECTED: FALSIFIED.
+lemma EO_honest_signature_uniquely_credited: all-traces
+    "All pkH m sig pkC #s #c.
+        SignedBy(pkH, m, sig) @ s & CreditKey(pkC, m, sig) @ c
+        ==> pkH = pkC"
+
+end

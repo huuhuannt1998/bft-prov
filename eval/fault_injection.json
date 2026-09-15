@@ -1,0 +1,361 @@
+{
+  "faults": {
+    "baseline honest certificate": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "valid"
+      ]
+    },
+    "missing signature": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "insufficient quorum: 4 < 5"
+      ]
+    },
+    "duplicate signer": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "duplicate signer key-00"
+      ]
+    },
+    "modified action": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "vote does not bind this action record (key-00)"
+      ]
+    },
+    "modified device": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "vote does not bind this action record (key-00)"
+      ]
+    },
+    "modified request commitment": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "vote does not bind this action record (key-00)"
+      ]
+    },
+    "modified context commitment": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "vote does not bind this action record (key-00)"
+      ]
+    },
+    "modified policy commitment": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "vote does not bind this action record (key-00)"
+      ]
+    },
+    "wrong epoch": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "epoch mismatch"
+      ]
+    },
+    "invalid signature": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "invalid signature (key-00)"
+      ]
+    },
+    "malformed signature encoding": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "malformed signature (key-00)"
+      ]
+    },
+    "unenrolled signer": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "unregistered key key-99"
+      ]
+    },
+    "truncated certificate": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "parse failure"
+      ]
+    },
+    "revoked key": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "key not active in epoch 4 (key-02)"
+      ]
+    },
+    "stale-epoch certificate replayed later": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "epoch mismatch"
+      ]
+    },
+    "count met, single declared family (coverage)": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "coverage: only 1 distinct family < 3"
+      ]
+    },
+    "replayed certificate": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "certificate already committed"
+      ]
+    },
+    "reused nonce": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "nonce reuse"
+      ]
+    },
+    "reused sequence": {
+      "group": "certificate/protocol",
+      "trials": 25,
+      "correct": 25,
+      "false_accept": 0,
+      "reasons": [
+        "sequence 1 not greater than 1",
+        "sequence 10 not greater than 10",
+        "sequence 11 not greater than 11",
+        "sequence 12 not greater than 12",
+        "sequence 13 not greater than 13",
+        "sequence 14 not greater than 14",
+        "sequence 15 not greater than 15",
+        "sequence 16 not greater than 16",
+        "sequence 17 not greater than 17",
+        "sequence 18 not greater than 18",
+        "sequence 19 not greater than 19",
+        "sequence 2 not greater than 2",
+        "sequence 20 not greater than 20",
+        "sequence 21 not greater than 21",
+        "sequence 22 not greater than 22",
+        "sequence 23 not greater than 23",
+        "sequence 24 not greater than 24",
+        "sequence 25 not greater than 25",
+        "sequence 3 not greater than 3",
+        "sequence 4 not greater than 4",
+        "sequence 5 not greater than 5",
+        "sequence 6 not greater than 6",
+        "sequence 7 not greater than 7",
+        "sequence 8 not greater than 8",
+        "sequence 9 not greater than 9"
+      ]
+    },
+    "deleted log entry": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false
+      }
+    },
+    "reordered log entries": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false
+      }
+    },
+    "rewritten certificate leaf": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false
+      }
+    },
+    "log rollback (truncated tail)": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false
+      }
+    },
+    "split view / equivocating log": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false,
+        "detected_by_gossip_between_two_clients": true
+      }
+    },
+    "stale checkpoint served": {
+      "group": "log",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "detected_with_retained_checkpoint": true,
+        "detected_with_operator_head_only": false
+      }
+    },
+    "device rejects command": {
+      "group": "device lifecycle",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "terminal_state": "failed:rejected",
+        "lifecycle": [
+          "proposed",
+          "approved",
+          "committed",
+          "transmitted",
+          "failed:rejected"
+        ]
+      }
+    },
+    "device never acknowledges": {
+      "group": "device lifecycle",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "terminal_state": "failed:timeout",
+        "lifecycle": [
+          "proposed",
+          "approved",
+          "committed",
+          "transmitted",
+          "failed:timeout"
+        ]
+      }
+    },
+    "device falsely acknowledges, state unchanged": {
+      "group": "device lifecycle",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "terminal_state": "failed:unobserved",
+        "lifecycle": [
+          "proposed",
+          "approved",
+          "committed",
+          "transmitted",
+          "acknowledged",
+          "failed:unobserved"
+        ]
+      }
+    },
+    "observed state contradicts command": {
+      "group": "device lifecycle",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "terminal_state": "failed:inconsistent",
+        "lifecycle": [
+          "proposed",
+          "approved",
+          "committed",
+          "transmitted",
+          "acknowledged",
+          "observed",
+          "failed:inconsistent"
+        ]
+      }
+    },
+    "observed state stale": {
+      "group": "device lifecycle",
+      "trials": 1,
+      "correct": 1,
+      "false_accept": 0,
+      "reasons": [],
+      "detail": {
+        "terminal_state": "failed:stale-observation",
+        "lifecycle": [
+          "proposed",
+          "approved",
+          "committed",
+          "transmitted",
+          "acknowledged",
+          "failed:stale-observation"
+        ]
+      }
+    }
+  },
+  "trials": 25,
+  "totals": {
+    "trials": 486,
+    "correct": 486,
+    "false_accept": 0
+  }
+}

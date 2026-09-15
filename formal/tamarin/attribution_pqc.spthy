@@ -1,0 +1,106 @@
+/*
+  PQ-BFT-Prov — Tamarin model, PQC instance (Task 2, RQ2 core).
+  Mission mis_01KVS3YJBEHQ3GD6Y5N6ZTJTSD ; FV footing dec_01KVS3WK60WAPV8TS7QBZ108BM.
+
+  Single-actuation core: one honest agent A, a verified guard/log, an (emulated) actuator.
+  Property vocabulary is normative per docs/01-threat-model/system-and-threat-model.md.
+
+  Signatures are POST-QUANTUM (ML-DSA), modeled with an explicit equational theory.
+  There is NO adversary forge rule -> ML-DSA EUF-CMA is RETAINED under the quantum adversary
+  (primitive relativization, §4.2 of the spec). Primitive security is ASSUMED (Formosa-Crypto/
+  liboqs), not proven here.
+
+  *** BUFF CAVEAT (gates the P3 claim per PI directive) ***
+  The equation `verifyQ(signQ(m,sk), m, pkQ(sk)) = true` makes a signature verify ONLY under the
+  matching public key and ONLY for the signed message. The symbolic theory therefore SILENTLY
+  ASSUMES exclusive ownership (DEO) and message-bound signatures (MBS) — the BUFF properties.
+  A clean P3 proof here is faithful to ML-DSA ONLY IF Task 3 (docs/03-buff-memo) confirms ML-DSA
+  actually provides those properties (or the BUFF-lifting transform restores them). See the
+  companion file attribution_buff_sensitivity.spthy for what breaks when DEO is dropped.
+*/
+
+theory PQ_BFT_Prov_attribution_pqc
+begin
+
+functions: pkQ/1, signQ/2, verifyQ/3, true/0
+equations: verifyQ(signQ(m, sk), m, pkQ(sk)) = true
+
+restriction Equality:
+    "All a b #i. Eq(a, b) @ i ==> a = b"
+
+// Tamper-evident, nonce-indexed append-only log commits each nonce at most once
+// (models the log/guard rejecting a duplicate-nonce commit — a real, implementable mechanism).
+restriction UniqueCommitPerNonce:
+    "All n #i #j. UniqueCommit(n) @ i & UniqueCommit(n) @ j ==> #i = #j"
+
+/* ---- Honest agent key registration (ML-DSA keypair) ---- */
+rule Register_Agent:
+    [ Fr(~skA) ]
+  --[ RegisterAgent($A, pkQ(~skA)) ]->
+    [ !Ltk($A, ~skA), !Pk($A, pkQ(~skA)), Out(pkQ(~skA)) ]
+
+/* ---- Agent decides actuation intent x = <dev, cmd, n> and signs it ----
+   The LLM agent is an untrusted oracle; here we model an HONEST decision event so the
+   correspondence has a genuine origin to bind to. A compromised agent is handled by the
+   guard (P2), not by trusting the agent. */
+rule Agent_Decide:
+    [ !Ltk($A, ~skA), Fr(~n) ]
+  --[ AgentDecide($A, <$dev, $cmd, ~n>) ]->
+    [ Out( <$A, $dev, $cmd, ~n, signQ(<$dev, $cmd, ~n>, ~skA)> ) ]
+
+/* ---- Verified guard: checks signature + policy, commits to the tamper-evident log ----
+   The agent (even if adversarial) cannot route around the guard: actuation is only reachable
+   through the linear Actuatable fact this rule produces. */
+rule Guard_Approve_and_Commit:
+    [ In( <$A, $dev, $cmd, ~n, sig> ), !Pk($A, pkA) ]
+  --[ Eq( verifyQ(sig, <$dev, $cmd, ~n>, pkA), true ),
+      UniqueCommit(~n),
+      PolicyApprove($A, <$dev, $cmd, ~n>),
+      ProvenanceCommit($A, <$dev, $cmd, ~n>) ]->
+    [ Actuatable($A, <$dev, $cmd, ~n>, sig, pkA),
+      !LogEntry($A, <$dev, $cmd, ~n>, sig) ]
+
+/* ---- Gateway/actuator: re-verifies the committed record, then actuates (emulated) ----
+   Actuatable is LINEAR -> consumed once -> at most one actuation per commit. */
+rule Verifier_Actuate:
+    [ Actuatable($A, x, sig, pkA) ]
+  --[ Eq( verifyQ(sig, x, pkA), true ),
+      Actuate($A, x) ]->
+    [ ]
+
+/* =========================  SECURITY PROPERTIES  ========================= */
+
+// Sanity: the happy path is reachable (an actuation can occur).
+lemma actuation_reachable: exists-trace
+    "Ex A x #i. Actuate(A, x) @ i"
+
+// P1 — Authentication: no actuation without a genuine prior decision by the named agent.
+lemma P1_authentication: all-traces
+    "All A x #i. Actuate(A, x) @ i
+        ==> (Ex #j. AgentDecide(A, x) @ j & j < i)"
+
+// P2 — Policy-compliance binding: every actuation was approved by the guard.
+lemma P2_policy_compliance: all-traces
+    "All A x #i. Actuate(A, x) @ i
+        ==> (Ex #k. PolicyApprove(A, x) @ k & k < i)"
+
+// P3 — Injective attribution-binding (THE CORE, RQ2): each actuation maps to a unique decision;
+//      no replay to a second actuation.
+lemma P3_injective_attribution: all-traces
+    "(All A x #i1 #i2. Actuate(A, x) @ i1 & Actuate(A, x) @ i2 ==> #i1 = #i2)
+     & (All A x #i. Actuate(A, x) @ i
+            ==> (Ex #j. AgentDecide(A, x) @ j & j < i
+                 & (All A2 #j2. AgentDecide(A2, x) @ j2 ==> A2 = A)))"
+
+// P4 — No actuation can be attributed to an intent never committed to the log (non-repudiation core).
+lemma P4_logged_before_actuate: all-traces
+    "All A x #i. Actuate(A, x) @ i
+        ==> (Ex #c. ProvenanceCommit(A, x) @ c & c < i)"
+
+// Negative control: under the quantum adversary WITHOUT classical-signature break,
+// no forgery (actuation with no matching decision) is reachable. Expect: FALSIFIED-as-unreachable,
+// i.e. Tamarin proves this exists-trace has NO trace.
+lemma forgery_unreachable_pqc: exists-trace
+    "Ex A x #i. Actuate(A, x) @ i & not (Ex #j. AgentDecide(A, x) @ j)"
+
+end

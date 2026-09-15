@@ -1,0 +1,4 @@
+# Sweep logs are runtime noise; the per-agent result files ARE the artifact
+# (raw per-repetition votes, promised in the paper's reproducibility section)
+# and are tracked deliberately.
+sweep.log

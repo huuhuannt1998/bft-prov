@@ -1,0 +1,35 @@
+# Constrained ARM64 Linux gateway image.
+#
+# This is NOT a Raspberry Pi and we never label it one. It is a real aarch64 Linux userspace running the
+# unmodified enforcement path, which we then restrict to one CPU and 512 MB so the paper can report a
+# constrained-resource measurement rather than only a desktop-class one. What it controls for is
+# operating system, ISA, core count and memory budget; what it does not control for is microarchitecture,
+# since the underlying cores remain Apple M4 rather than a Cortex-A class part.
+#
+# The image pins liboqs 0.16.0, while the host benchmark used 0.15.0. The comparison we draw is
+# therefore constrained-container versus UNCONSTRAINED-container, both at 0.16.0, so the contrast is
+# within one software stack; the host figure is reported alongside as context, not as the contrast.
+FROM python:3.12-slim-bookworm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential cmake ninja-build git ca-certificates curl libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# liboqs (ML-DSA) built from source for aarch64, then the Python binding.
+RUN git clone --depth 1 --branch 0.16.0 https://github.com/open-quantum-safe/liboqs /tmp/liboqs \
+    && cmake -S /tmp/liboqs -B /tmp/liboqs/build -GNinja \
+         -DBUILD_SHARED_LIBS=ON -DOQS_BUILD_ONLY_LIB=ON -DCMAKE_BUILD_TYPE=Release \
+    && cmake --build /tmp/liboqs/build --parallel \
+    && cmake --install /tmp/liboqs/build \
+    && ldconfig && rm -rf /tmp/liboqs
+
+RUN pip install --no-cache-dir liboqs-python==0.16.0 pymerkle==6.1.0
+
+# Open Policy Agent, official static arm64 build, for the deterministic-verifier measurement.
+RUN curl -fsSL -o /usr/local/bin/opa \
+      https://openpolicyagent.org/downloads/v1.4.2/opa_linux_arm64_static \
+    && chmod +x /usr/local/bin/opa
+
+WORKDIR /app
+ENV PYTHONPATH=/app
+CMD ["python3", "-m", "edge.bench_gateway", "--iters", "20", "--policy-iters", "200"]

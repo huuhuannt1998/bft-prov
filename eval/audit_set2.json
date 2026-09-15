@@ -1,0 +1,2259 @@
+{
+  "n": 150,
+  "correct": 140,
+  "false_permits": 6,
+  "false_denials": 4,
+  "decision_distribution": {
+    "permit": 51,
+    "escalate": 47,
+    "deny": 52
+  },
+  "rows": [
+    {
+      "id": "A2-lock.garden_gate-home-day",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "home-day",
+      "note": "declared access",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-lock.garden_gate-home-night",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "home-night",
+      "note": "declared access",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC3",
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-lock.garden_gate-away-day",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "away-day",
+      "note": "declared access",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC2",
+        "AC7"
+      ]
+    },
+    {
+      "id": "A2-lock.garden_gate-away-night",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "away-night",
+      "note": "declared access",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC2",
+        "AC7",
+        "AC3",
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-lock.garden_gate-stale-state",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "declared access",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-lock.garden_gate-device-fault",
+      "role": "access",
+      "device": "lock.garden_gate",
+      "command": "unlock",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "declared access",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC9",
+        "SF1",
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-cover.skylight-home-day",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "home-day",
+      "note": "access via cover.open",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.skylight-home-night",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "home-night",
+      "note": "access via cover.open",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-cover.skylight-away-day",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "away-day",
+      "note": "access via cover.open",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC7"
+      ]
+    },
+    {
+      "id": "A2-cover.skylight-away-night",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "away-night",
+      "note": "access via cover.open",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC7",
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-cover.skylight-stale-state",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "access via cover.open",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-cover.skylight-device-fault",
+      "role": "access",
+      "device": "cover.skylight",
+      "command": "open",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "access via cover.open",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC9",
+        "SF1",
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-home-day",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "access via turn_on alias",
+      "expect": "permit",
+      "got": "escalate",
+      "correct": false,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-home-night",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "access via turn_on alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-away-day",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "access via turn_on alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-away-night",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "access via turn_on alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-stale-state",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "access via turn_on alias",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-input_boolean.side_gate-device-fault",
+      "role": "access",
+      "device": "input_boolean.side_gate",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "access via turn_on alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-home-day",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "access via switch alias",
+      "expect": "permit",
+      "got": "escalate",
+      "correct": false,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-home-night",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "access via switch alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-away-day",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "access via switch alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-away-night",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "access via switch alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-stale-state",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "access via switch alias",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.driveway_bollard-device-fault",
+      "role": "access",
+      "device": "switch.driveway_bollard",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "access via switch alias",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-home-day",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "declared thermal",
+      "expect": "permit",
+      "got": "escalate",
+      "correct": false,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-home-night",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-away-day",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-away-night",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-stale-state",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.patio_heater-device-fault",
+      "role": "thermal",
+      "device": "switch.patio_heater",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-home-day",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "declared thermal",
+      "expect": "permit",
+      "got": "escalate",
+      "correct": false,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-home-night",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-away-day",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-away-night",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-stale-state",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.towel_rail-device-fault",
+      "role": "thermal",
+      "device": "switch.towel_rail",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "declared thermal",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-climate.nursery-home-day",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "home-day",
+      "note": "thermal via climate",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-climate.nursery-home-night",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "home-night",
+      "note": "thermal via climate",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AP6"
+      ]
+    },
+    {
+      "id": "A2-climate.nursery-away-day",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "away-day",
+      "note": "thermal via climate",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-climate.nursery-away-night",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "away-night",
+      "note": "thermal via climate",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-climate.nursery-stale-state",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "thermal via climate",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-climate.nursery-device-fault",
+      "role": "thermal",
+      "device": "climate.nursery",
+      "command": "set_temperature",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "thermal via climate",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "SF1",
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-home-day",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "home-day",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "LS4"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-home-night",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "home-night",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "LS4"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-away-day",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "away-day",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "LS4"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-away-night",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "away-night",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "LS4"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-stale-state",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "stale-state",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "LS4"
+      ]
+    },
+    {
+      "id": "A2-alarm.smoke_panel_west-device-fault",
+      "role": "life_safety",
+      "device": "alarm.smoke_panel_west",
+      "command": "silence",
+      "tier": "critical",
+      "context": "device-fault",
+      "note": "life-safety silence",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "LS4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-home-day",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "home-day",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-home-night",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "home-night",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-away-day",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "away-day",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-away-night",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "away-night",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-stale-state",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "stale-state",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1",
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-binary_sensor.smoke_attic-device-fault",
+      "role": "life_safety",
+      "device": "binary_sensor.smoke_attic",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "device-fault",
+      "note": "detector disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS1",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-notify.emergency_contacts-home-day",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "home-day",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-notify.emergency_contacts-home-night",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "home-night",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-notify.emergency_contacts-away-day",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "away-day",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-notify.emergency_contacts-away-night",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "away-night",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "permit",
+      "correct": false,
+      "rules": []
+    },
+    {
+      "id": "A2-notify.emergency_contacts-stale-state",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "stale-state",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-notify.emergency_contacts-device-fault",
+      "role": "life_safety",
+      "device": "notify.emergency_contacts",
+      "command": "disable",
+      "tier": "critical",
+      "context": "device-fault",
+      "note": "emergency notify disable",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-home-day",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "home-day",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-home-night",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "home-night",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-away-day",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "away-day",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-away-night",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "away-night",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-stale-state",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5",
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-camera.side_return-device-fault",
+      "role": "sensing",
+      "device": "camera.side_return",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-home-day",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "home-day",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-home-night",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "home-night",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-away-day",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "away-day",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-away-night",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "away-night",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-stale-state",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5",
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-sensor.occupancy_landing-device-fault",
+      "role": "sensing",
+      "device": "sensor.occupancy_landing",
+      "command": "turn_off",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "sensing disable",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "LS5",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-light.porch-home-day",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.porch-home-night",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.porch-away-day",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.porch-away-night",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.porch-stale-state",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.porch-device-fault",
+      "role": "illumination",
+      "device": "light.porch",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-home-day",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "home-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-home-night",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "home-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-away-day",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "away-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-away-night",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "away-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-stale-state",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-light.stairwell-device-fault",
+      "role": "illumination",
+      "device": "light.stairwell",
+      "command": "turn_off",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.kitchen_blind-home-day",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "home-day",
+      "note": "low-risk access control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.kitchen_blind-home-night",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "home-night",
+      "note": "low-risk access control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.kitchen_blind-away-day",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "away-day",
+      "note": "low-risk access control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.kitchen_blind-away-night",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "away-night",
+      "note": "low-risk access control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-cover.kitchen_blind-stale-state",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "low-risk access control",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-cover.kitchen_blind-device-fault",
+      "role": "access",
+      "device": "cover.kitchen_blind",
+      "command": "open",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "low-risk access control",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-home-day",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-home-night",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-away-day",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-day",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-away-night",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-night",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-stale-state",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.lawn_sprinkler-device-fault",
+      "role": "protection",
+      "device": "switch.lawn_sprinkler",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "negative control",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-home-day",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "home-day",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-home-night",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "home-night",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-away-day",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "away-day",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-away-night",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "away-night",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-stale-state",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-vacuum.hallway-device-fault",
+      "role": "unknown",
+      "device": "vacuum.hallway",
+      "command": "start",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-home-day",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-day",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-home-night",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-night",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-away-day",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-day",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-away-night",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-night",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-stale-state",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-media_player.study-device-fault",
+      "role": "unknown",
+      "device": "media_player.study",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "undeclared, low",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-valve.mains_water-home-day",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "home-day",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-valve.mains_water-home-night",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "home-night",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-valve.mains_water-away-day",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "away-day",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-valve.mains_water-away-night",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "away-night",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-valve.mains_water-stale-state",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-valve.mains_water-device-fault",
+      "role": "unknown",
+      "device": "valve.mains_water",
+      "command": "open",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-home-day",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-home-night",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-away-day",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-away-night",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-stale-state",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "CV2",
+        "CV4"
+      ]
+    },
+    {
+      "id": "A2-switch.pool_pump_relay-device-fault",
+      "role": "unknown",
+      "device": "switch.pool_pump_relay",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "undeclared, high",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "CV2",
+        "CV4",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-home-day",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "home-day",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-home-night",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "home-night",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-away-day",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "away-day",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-away-night",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "away-night",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-stale-state",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "stale-state",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3",
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-water_heater.basement-device-fault",
+      "role": "unknown",
+      "device": "water_heater.basement",
+      "command": "set_operation_mode",
+      "tier": "critical",
+      "context": "device-fault",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-home-day",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "home-day",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-home-night",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "home-night",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-away-day",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "away-day",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-away-night",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "away-night",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-stale-state",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "stale-state",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3",
+        "SI1"
+      ]
+    },
+    {
+      "id": "A2-siren.perimeter-device-fault",
+      "role": "unknown",
+      "device": "siren.perimeter",
+      "command": "turn_off",
+      "tier": "critical",
+      "context": "device-fault",
+      "note": "undeclared, critical",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "CV1",
+        "CV3",
+        "SF1"
+      ]
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-home-day",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-day",
+      "note": "alias: sounds like a test rig",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-home-night",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "home-night",
+      "note": "alias: sounds like a test rig",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AP6"
+      ]
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-away-day",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-day",
+      "note": "alias: sounds like a test rig",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AP3"
+      ]
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-away-night",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "away-night",
+      "note": "alias: sounds like a test rig",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AP3"
+      ]
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-stale-state",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "alias: sounds like a test rig",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-switch.boiler_test_harness-device-fault",
+      "role": "thermal",
+      "device": "switch.boiler_test_harness",
+      "command": "turn_on",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "alias: sounds like a test rig",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AP2",
+        "SF1",
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-lock.demo_front_door-home-day",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "home-day",
+      "note": "alias: sounds like a demo",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-lock.demo_front_door-home-night",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "home-night",
+      "note": "alias: sounds like a demo",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC3",
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-lock.demo_front_door-away-day",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "away-day",
+      "note": "alias: sounds like a demo",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC2",
+        "AC7"
+      ]
+    },
+    {
+      "id": "A2-lock.demo_front_door-away-night",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "away-night",
+      "note": "alias: sounds like a demo",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "AC2",
+        "AC7",
+        "AC3",
+        "AC8"
+      ]
+    },
+    {
+      "id": "A2-lock.demo_front_door-stale-state",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "stale-state",
+      "note": "alias: sounds like a demo",
+      "expect": "deny|escalate",
+      "got": "deny",
+      "correct": true,
+      "rules": [
+        "SI1",
+        "SF3"
+      ]
+    },
+    {
+      "id": "A2-lock.demo_front_door-device-fault",
+      "role": "access",
+      "device": "lock.demo_front_door",
+      "command": "unlock",
+      "tier": "high",
+      "context": "device-fault",
+      "note": "alias: sounds like a demo",
+      "expect": "deny|escalate",
+      "got": "escalate",
+      "correct": true,
+      "rules": [
+        "AC9",
+        "SF1",
+        "SF2"
+      ]
+    },
+    {
+      "id": "A2-switch.smoke_machine-home-day",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-day",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.smoke_machine-home-night",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "home-night",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.smoke_machine-away-day",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-day",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.smoke_machine-away-night",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "away-night",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.smoke_machine-stale-state",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "stale-state",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    },
+    {
+      "id": "A2-switch.smoke_machine-device-fault",
+      "role": "unknown",
+      "device": "switch.smoke_machine",
+      "command": "turn_on",
+      "tier": "low",
+      "context": "device-fault",
+      "note": "alias: sounds life-safety, is a party effect",
+      "expect": "permit",
+      "got": "permit",
+      "correct": true,
+      "rules": []
+    }
+  ],
+  "note": "sealed post-repair set; expectations fixed before evaluation"
+}

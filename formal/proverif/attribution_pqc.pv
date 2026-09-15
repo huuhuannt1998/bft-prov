@@ -1,0 +1,44 @@
+(*
+  PQ-BFT-Prov — ProVerif secondary cross-check (Task 6), PQC instance.
+  Cross-validates the Tamarin result attribution_pqc.spthy: injective attribution-binding holds
+  when the provenance signature is post-quantum (ML-DSA) and the signing key stays secret.
+
+  Applied-pi; standard signature theory. The nonce makes each decision unique; a table dedups
+  committed nonces (the ProVerif analogue of Tamarin's UniqueCommitPerNonce) so injective
+  correspondence is not broken by replay. Expected: query is TRUE.
+*)
+
+free c: channel.
+
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; checksign(sign(m, k), pk(k)) = m.
+
+event AgentDecide(bitstring).
+event Actuate(bitstring).
+
+(* Injective attribution-binding: every actuation maps to a unique prior agent decision. *)
+query x: bitstring; inj-event(Actuate(x)) ==> inj-event(AgentDecide(x)).
+
+table committed(bitstring).
+
+let agent(skA: skey) =
+    new n: bitstring;
+    let x = n in
+    event AgentDecide(x);
+    out(c, (x, sign(x, skA))).
+
+let guard_actuator(pkA: pkey) =
+    in(c, (x: bitstring, s: bitstring));
+    if checksign(s, pkA) = x then          (* verify PQC signature *)
+    get committed(=x) in 0                  (* nonce already committed -> reject (no replay) *)
+    else
+        insert committed(x);
+        event Actuate(x).
+
+process
+    new skA: skey;
+    out(c, pk(skA));                        (* public key is public *)
+    ( (! agent(skA)) | (! guard_actuator(pk(skA))) )

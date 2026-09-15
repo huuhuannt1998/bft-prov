@@ -1,0 +1,425 @@
+{
+  "rows": [
+    {
+      "action": "lock.front_door|unlock",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "lock.front_door|unlock",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "lock.front_door|unlock",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "lock.front_door|unlock",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "lock.front_door|unlock",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "lock.front_door|unlock",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "input_boolean.garage_door|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.front_gate|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.gas_fireplace|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.space_heater|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.water_heater|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "home-night",
+      "expected": "permit",
+      "got": "escalate",
+      "correct": false
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "switch.pool_heater|turn_on",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "home-night",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "away-day",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "away-night",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "stale-state",
+      "expected": "deny|escalate",
+      "got": "deny",
+      "correct": true
+    },
+    {
+      "action": "cover.all_windows|open",
+      "context": "device-fault",
+      "expected": "deny|escalate",
+      "got": "escalate",
+      "correct": true
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "home-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "home-night",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "away-day",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "away-night",
+      "expected": "permit",
+      "got": "permit",
+      "correct": true
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "stale-state",
+      "expected": "permit",
+      "got": "escalate",
+      "correct": false
+    },
+    {
+      "action": "cover.blinds|open",
+      "context": "device-fault",
+      "expected": "permit",
+      "got": "escalate",
+      "correct": false
+    }
+  ],
+  "n": 54,
+  "correct": 51,
+  "false_permits": 0,
+  "false_denials": 3,
+  "escalations": 18,
+  "contexts": {
+    "home-day": {
+      "occ": "home",
+      "age": 5,
+      "t": "14:00",
+      "fault": false
+    },
+    "home-night": {
+      "occ": "home",
+      "age": 5,
+      "t": "02:30",
+      "fault": false
+    },
+    "away-day": {
+      "occ": "away",
+      "age": 5,
+      "t": "14:00",
+      "fault": false
+    },
+    "away-night": {
+      "occ": "away",
+      "age": 30,
+      "t": "22:30",
+      "fault": false
+    },
+    "stale-state": {
+      "occ": "home",
+      "age": 4000,
+      "t": "14:00",
+      "fault": false
+    },
+    "device-fault": {
+      "occ": "home",
+      "age": 5,
+      "t": "14:00",
+      "fault": true
+    }
+  }
+}

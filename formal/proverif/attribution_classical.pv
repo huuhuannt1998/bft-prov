@@ -1,0 +1,45 @@
+(*
+  PQ-BFT-Prov — ProVerif secondary cross-check (Task 6), CLASSICAL instance.
+  Cross-validates attribution_classical.spthy: under a quantum adversary the classical signing key
+  is recoverable (Shor), so attribution-binding FAILS.
+
+  Shor is modeled by leaking the signing key on the public channel after key generation
+  (out(c, skA)) — the ProVerif analogue of the Tamarin Shor_break_classical / !ShorOracle rule.
+  Expected: BOTH the injective and the non-injective correspondence are FALSE (forgery reachable).
+*)
+
+free c: channel.
+
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; checksign(sign(m, k), pk(k)) = m.
+
+event AgentDecide(bitstring).
+event Actuate(bitstring).
+
+query x: bitstring; inj-event(Actuate(x)) ==> inj-event(AgentDecide(x)).
+query x: bitstring; event(Actuate(x)) ==> event(AgentDecide(x)).
+
+table committed(bitstring).
+
+let agent(skA: skey) =
+    new n: bitstring;
+    let x = n in
+    event AgentDecide(x);
+    out(c, (x, sign(x, skA))).
+
+let guard_actuator(pkA: pkey) =
+    in(c, (x: bitstring, s: bitstring));
+    if checksign(s, pkA) = x then
+    get committed(=x) in 0
+    else
+        insert committed(x);
+        event Actuate(x).
+
+process
+    new skA: skey;
+    out(c, pk(skA));
+    out(c, skA);                            (* SHOR: quantum adversary recovers the classical key *)
+    ( (! agent(skA)) | (! guard_actuator(pk(skA))) )

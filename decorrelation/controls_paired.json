@@ -1,0 +1,13 @@
+{
+ "note": "agent-paired cluster bootstrap on the 36 expanded controls",
+ "lookalike_minus_prohibition": [
+  5.589743589743589,
+  -6.824358974358973,
+  17.49358974358971
+ ],
+ "lookalike_minus_warning": [
+  5.589743589743589,
+  -3.8474358974358975,
+  15.283333333333326
+ ]
+}

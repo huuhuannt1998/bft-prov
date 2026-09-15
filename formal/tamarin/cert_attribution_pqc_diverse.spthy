@@ -1,0 +1,89 @@
+/*
+  PQ-BFT-Prov Phase 2 — Tamarin certificate-attribution model, PQC instance (Task 4, J2 core).
+  Mission mis_01KVWZY3TK1WJHWD7P6AZV2F2G ; joint-property spec docs/p2-01-joint-property.
+
+  Lifts Phase-1 P3 from a SINGLE signature to a QUORUM CERTIFICATE. Core case N=4, f=1, quorum=3.
+  Each agent vote binds <pk_i, a, v> (per-vote BUFF, seed from attribution_buff_fixed.spthy).
+  A certificate forms from 3 distinct authentic valid votes for the SAME (a, v); the actuation binds
+  to the certificate. The adversary is quantum (ML-DSA retained) and controls ONE Byzantine agent
+  (its signing key is leaked) — f = 1.
+
+  Claim J2: every actuation is backed by >= f+1 = 2 HONEST votes for that (a, v) -> no f-bounded
+  Byzantine set can fabricate a certificate (it would need to forge >=2 honest ML-DSA signatures).
+  Plus injectivity (no cross-view replay to a second actuation). Expected: all lemmas VERIFIED.
+*/
+
+theory PQ_BFT_Prov_cert_attribution_pqc_diverse
+begin
+
+functions: pkQ/1, signQ/2, verifyQ/3, true/0
+equations: verifyQ(signQ(m, sk), m, pkQ(sk)) = true
+
+restriction Equality:
+    "All a b #i. Eq(a, b) @ i ==> a = b"
+restriction Inequality:
+    "All x #i. Neq(x, x) @ i ==> F"
+restriction UniqueCert:
+    "All a v #i #j. CertFormed(a, v) @ i & CertFormed(a, v) @ j ==> #i = #j"
+// f = 1: at most one Byzantine agent may be registered (N >= 3f+1 = 4, quorum 2f+1 = 3).
+restriction AtMostOneByzantine:
+    "All B1 B2 pk1 pk2 #i #j. RegByz(B1, pk1) @ i & RegByz(B2, pk2) @ j ==> #i = #j"
+
+/* Honest agent: registers an ML-DSA key, marked !Honest. */
+rule Register_Honest:
+    [ Fr(~skA) ]
+  --[ RegHonest($A, pkQ(~skA)) ]->
+    [ !Ltk($A, ~skA), !Pk($A, pkQ(~skA)), !Honest($A),
+      !Family(pkQ(~skA), $fam), Out(pkQ(~skA)) ]
+
+/* Byzantine agent (<= f = 1): its signing key is LEAKED to the adversary. */
+rule Register_Byzantine:
+    [ Fr(~skB) ]
+  --[ RegByz($B, pkQ(~skB)) ]->
+    [ !Pk($B, pkQ(~skB)), !Family(pkQ(~skB), $famB), Out(pkQ(~skB)), Out(~skB) ]
+
+/* Honest vote on a proposal (a, v): sign <pk_A, a, v>. HonestVote records the genuine voter. */
+rule Honest_Vote:
+    [ !Ltk($A, ~skA) ]
+  --[ HonestVote($A, pkQ(~skA), $act, $v) ]->     // record the voting KEY (attribution is per-key)
+    [ Out( <$act, $v, pkQ(~skA), signQ(<pkQ(~skA), $act, $v>, ~skA)> ) ]
+
+/* Form a quorum certificate from 3 distinct authentic valid votes for the SAME (a, v), then actuate.
+   Distinctness blocks ballot-stuffing/agent-set substitution; same-(a,v) blocks mix-and-match. */
+rule Form_QC_and_Actuate:
+    [ In( <$act, $v, pk1, s1> ), In( <$act, $v, pk2, s2> ), In( <$act, $v, pk3, s3> ),
+      !Pk($A1, pk1), !Pk($A2, pk2), !Pk($A3, pk3),
+      !Family(pk1, fam1), !Family(pk2, fam2), !Family(pk3, fam3) ]
+  --[ Eq( verifyQ(s1, <pk1, $act, $v>, pk1), true ),
+      Eq( verifyQ(s2, <pk2, $act, $v>, pk2), true ),
+      Eq( verifyQ(s3, <pk3, $act, $v>, pk3), true ),
+      Neq(pk1, pk2), Neq(pk2, pk3), Neq(pk1, pk3),
+      Neq(fam1, fam2), Neq(fam2, fam3), Neq(fam1, fam3),
+      CertFormed($act, $v),
+      CertVoters($A1, $A2, $A3, $act, $v),
+      Actuate($act, $v) ]->
+    [ ]
+
+/* ============================ PROPERTIES ============================ */
+
+// Sanity: a certified actuation is reachable.
+lemma actuation_reachable: exists-trace
+    "Ex a v #i. Actuate(a, v) @ i"
+
+// J2-core: every actuation is backed by >= 2 DISTINCT-KEY HONEST votes for that (a, v).
+// (f=1, quorum=3 -> at least quorum - f = 2 honest votes; the Byzantine minority cannot actuate.)
+lemma J2_honest_quorum_backing: all-traces
+    "All a v #i. Actuate(a, v) @ i
+        ==> (Ex A1 A2 pk1 pk2 #j1 #j2.
+                HonestVote(A1, pk1, a, v) @ j1 & HonestVote(A2, pk2, a, v) @ j2
+                & not(pk1 = pk2))"
+
+// J2-injective: no certificate replay to a second actuation of the same (a, v).
+lemma J2_injective: all-traces
+    "All a v #i1 #i2. Actuate(a, v) @ i1 & Actuate(a, v) @ i2 ==> #i1 = #i2"
+
+// Negative control: an actuation with NO honest backing is unreachable (forgery-resistance).
+lemma forgery_unreachable_pqc: exists-trace
+    "Ex a v #i. Actuate(a, v) @ i & not (Ex A pk #j. HonestVote(A, pk, a, v) @ j)"
+
+end

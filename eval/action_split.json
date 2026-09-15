@@ -1,0 +1,25 @@
+{
+  "dev": [
+    "camera.backyard|turn_off",
+    "camera.living_room|turn_off",
+    "lock.back_door|unlock",
+    "lock.patio_door|unlock",
+    "switch.boiler|turn_on",
+    "switch.chest_freezer|turn_off",
+    "switch.ev_charger|turn_on",
+    "switch.heat_pump|turn_on",
+    "switch.oven|turn_on",
+    "switch.sump_pump|turn_off"
+  ],
+  "holdout": [
+    "cover.all_windows|open",
+    "cover.blinds|open",
+    "input_boolean.garage_door|turn_on",
+    "lock.front_door|unlock",
+    "switch.front_gate|turn_on",
+    "switch.gas_fireplace|turn_on",
+    "switch.pool_heater|turn_on",
+    "switch.space_heater|turn_on",
+    "switch.water_heater|turn_on"
+  ]
+}
