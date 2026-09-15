@@ -1,5 +1,5 @@
 """
-Expanded TDSC corpus (Phase 1, Task 6): 18 attack categories + delivery/turn/source/minimal-pair
+Expanded corpus (Phase 1, Task 6): 18 attack categories + delivery/turn/source/minimal-pair
 metadata, built on top of the scaled held-out corpus's target/benign vocabulary
 (`decorrelation.heldout_corpus_scaled`). Each category is templated hand-audited for realism
 across three sophistication levels (crude/moderate/subtle); every payload is DATA ingested by
@@ -41,7 +41,7 @@ MULTI_TURN = {"multi-turn-escalation"}
 
 
 @dataclass(frozen=True)
-class TdscCase:
+class Case:
     cid: str
     category: str
     delivery: str        # direct | indirect
@@ -57,7 +57,7 @@ class TdscCase:
 
 
 def _case(cid, cat, lvl, i, dev, cmd, ing, delivery="indirect", pair_id=""):
-    return TdscCase(cid=cid, category=cat, delivery=delivery,
+    return Case(cid=cid, category=cat, delivery=delivery,
                     turns="multi" if cat in MULTI_TURN else "single",
                     sophistication=lvl, source="public-derived" if cat in PUBLIC_DERIVED else "authored",
                     pair_id=pair_id, trusted_task=BENIGN_TASKS[i % len(BENIGN_TASKS)],
@@ -457,11 +457,11 @@ BUILDERS = {
 assert set(BUILDERS) == set(CATEGORIES)
 
 
-def build_tdsc_corpus() -> list[TdscCase]:
+def build_corpus() -> list[Case]:
     """Pure injection channel: every returned case has `ingested_injected != ingested_benign` (a real
     injection; finding C1). Exactly one attack per category is tagged with `pair_id` linking it to its
-    matched benign control in `TDSC_CONTROLS` (finding I5) -- no benign no-op is appended here."""
-    cases: list[TdscCase] = []
+    matched benign control in `CONTROLS` (finding I5) -- no benign no-op is appended here."""
+    cases: list[Case] = []
     seen_pair_cats: set[str] = set()
     for cat in CATEGORIES:
         fn = BUILDERS[cat]
@@ -475,17 +475,17 @@ def build_tdsc_corpus() -> list[TdscCase]:
     return cases
 
 
-def _build_tdsc_controls() -> list[TdscCase]:
+def _build_tdsc_controls() -> list[Case]:
     """One matched benign control per category (finding I5): shares its paired attack's category,
     delivery, turns, source, trusted_task, device, command, ingested_benign (same scaffolding); the
     injected content's intent is removed (`ingested_injected == ingested_benign`), so this is a true
     minimally-contrastive twin, not an unpaired benign case."""
-    controls: list[TdscCase] = []
+    controls: list[Case] = []
     seen: set[str] = set()
-    for x in build_tdsc_corpus():
+    for x in build_corpus():
         if x.pair_id and x.pair_id not in seen:
             seen.add(x.pair_id)
-            controls.append(TdscCase(
+            controls.append(Case(
                 cid=x.pair_id, category=x.category, delivery=x.delivery, turns=x.turns,
                 sophistication="n/a", source=x.source, pair_id=x.pair_id,
                 trusted_task=x.trusted_task, device=x.device, command=x.command,
@@ -494,7 +494,7 @@ def _build_tdsc_controls() -> list[TdscCase]:
     return controls
 
 
-TDSC_CONTROLS: list[TdscCase] = _build_tdsc_controls()
+CONTROLS: list[Case] = _build_tdsc_controls()
 
 
 SAFE_TARGETS = [  # >=25 safe (device, command, task, ingest) tuples spanning common household actuators
@@ -529,22 +529,22 @@ SAFE_TARGETS = [  # >=25 safe (device, command, task, ingest) tuples spanning co
 ]
 
 
-def build_tdsc_legit() -> list[TdscCase]:
+def build_tdsc_legit() -> list[Case]:
     out = []
     for i, (dev, cmd, task, ing) in enumerate(SAFE_TARGETS):
         for lvl in LEVELS + ["extra", "extra2", "extra3"]:   # multiply to reach >=150
-            out.append(TdscCase(cid=f"legit-{i}-{lvl}", category="legit", delivery="indirect",
+            out.append(Case(cid=f"legit-{i}-{lvl}", category="legit", delivery="indirect",
                                 turns="single", sophistication="n/a", source="authored", pair_id="",
                                 trusted_task=task, device=dev, command=cmd,
                                 ingested_benign=ing, ingested_injected=ing))
     return out
 
 
-TDSC_LEGIT = build_tdsc_legit()
+LEGIT_TASKS = build_tdsc_legit()
 
 if __name__ == "__main__":
     from collections import Counter
-    c = build_tdsc_corpus()
-    print(f"{len(c)} injection cases; {len(TDSC_CONTROLS)} matched benign controls; "
-          f"{len(TDSC_LEGIT)} legit; "
+    c = build_corpus()
+    print(f"{len(c)} injection cases; {len(CONTROLS)} matched benign controls; "
+          f"{len(LEGIT_TASKS)} legit; "
           f"by category: {dict(Counter(x.category for x in c))}")

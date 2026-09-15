@@ -1,4 +1,4 @@
-"""Pluggable prompt-level injection defenses over the shared Ollama vote path (TDSC RQ1).
+"""Pluggable prompt-level injection defenses over the shared Ollama vote path (the study RQ1).
 
 Each defense is a deterministic prompt/probe builder — testable without a model. All are FREE and
 prompt-level; `hierarchy`/`struq` are principled surrogates of published defenses (we cannot retrain

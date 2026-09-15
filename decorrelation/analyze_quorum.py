@@ -43,7 +43,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from decorrelation.corpus_tdsc import build_tdsc_corpus
+from decorrelation.corpus_main import build_corpus
 from decorrelation.model_matrix import MATRIX
 
 HERE = os.path.dirname(__file__)
@@ -100,7 +100,7 @@ def load_agents():
 
 
 def category_of(items_inj: list[str]) -> dict[str, str]:
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    cases = {c.cid: c for c in build_corpus()}
     return {cid: cases[cid].category for cid in items_inj if cid in cases}
 
 

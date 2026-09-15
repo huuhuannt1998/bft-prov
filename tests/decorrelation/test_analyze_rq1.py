@@ -43,7 +43,7 @@ def test_size_b_is_standardized_log_params():
     """preregistration.md §3: size_b = (log(params) - mean(log(params))) / sd(log(params)),
     computed over the RQ1 model matrix (MATRIX). GLMM-free: exercises _rows_from_cells's
     standardization directly via build_dataframe, using two real MATRIX tags of different
-    param sizes and real injected cids from build_tdsc_corpus so _rows_from_cells doesn't
+    param sizes and real injected cids from build_corpus so _rows_from_cells doesn't
     skip them."""
     tag_big, tag_small = "llama3.1:8b", "qwen2.5:3b"
     params_big = next(m.params for m in MATRIX if m.tag == tag_big)
@@ -56,7 +56,7 @@ def test_size_b_is_standardized_log_params():
     expected_big = (math.log(params_big) - mean_lp) / sd_lp
     expected_small = (math.log(params_small) - mean_lp) / sd_lp
 
-    # real injected cids (forged-user-auth is present in build_tdsc_corpus, see fua-0.. above)
+    # real injected cids (forged-user-auth is present in build_corpus, see fua-0.. above)
     cids = ["fua-0", "fua-1"]
     cells = [
         {"tag": tag_big, "defense": "none", "injected": {c: True for c in cids},

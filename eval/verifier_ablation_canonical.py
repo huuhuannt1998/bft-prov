@@ -26,7 +26,7 @@ sys.path.insert(0, ROOT)
 
 from decorrelation.analyze_quorum import (load_agents, pb_tail, stratified_split,  # noqa: E402
                                           category_of)
-from decorrelation.corpus_tdsc import build_tdsc_corpus  # noqa: E402
+from decorrelation.corpus_main import build_corpus  # noqa: E402
 
 CANON = os.path.join(ROOT, "decorrelation", "canonical_quorums.json")
 PRIOR = os.path.join(ROOT, "eval", "verifier_ablation.json")
@@ -47,7 +47,7 @@ def main() -> None:
     dec = {tuple(k.split(" ", 1)): v for k, v in prior["action_decisions"].items()}
 
     agents, _raw, items = load_agents()
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    cases = {c.cid: c for c in build_corpus()}
     cats = category_of(items["inj"])
     _, test_idx = stratified_split(items["inj"], cats)
 

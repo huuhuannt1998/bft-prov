@@ -1,4 +1,4 @@
-"""Adaptive-attacker sweep over the FULL deployable agent pool (IoT-J revision, reviewer C2).
+"""Adaptive-attacker sweep over the FULL deployable agent pool (earlier revision, reviewer C2).
 
 The non-adaptive corpus admits a training-selected agent that reaches 0% attack success at full
 utility, which would suggest agent selection solves the problem. That inference is only sound if the

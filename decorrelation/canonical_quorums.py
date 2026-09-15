@@ -97,8 +97,8 @@ def main() -> None:
 
     # ---- verifier permit mask per payload (fixed away/evening context)
     vb = json.load(open(os.path.join(os.path.dirname(HERE), "eval", "verifier_ablation.json")))
-    from decorrelation.corpus_tdsc import build_tdsc_corpus
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    from decorrelation.corpus_main import build_corpus
+    cases = {c.cid: c for c in build_corpus()}
     permit = np.array([1.0 if vb["action_decisions"][f"{cases[c].device} {cases[c].command}"] == "permit"
                        else 0.0 for c in items["inj"]])
 

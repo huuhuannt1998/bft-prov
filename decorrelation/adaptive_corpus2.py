@@ -1,4 +1,4 @@
-"""Expanded adaptive attack corpus: a frozen mutation grammar (USENIX revision, review section 8.4).
+"""Expanded adaptive attack corpus: a frozen mutation grammar (earlier revision, review section 8.4).
 
 The manuscript's adaptive evidence rested on 10 payloads, which shows that every defense and composition
 degrades but cannot rank them. This raises the corpus to the 50-100 range the review asks for WITHOUT a

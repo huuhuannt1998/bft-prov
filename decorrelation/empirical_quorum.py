@@ -1,4 +1,4 @@
-"""P0-B: observed q-of-N quorum tallies, not Poisson-binomial simulations (USENIX revision).
+"""P0-B: observed q-of-N quorum tallies, not Poisson-binomial simulations (earlier revision).
 
 Reviewer objection this closes: the manuscript's quorum numbers are computed by a Poisson-binomial
 recursion over per-payload rates p_i(x), so they are SIMULATED outcomes rather than observed quorum

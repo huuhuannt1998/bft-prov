@@ -1,4 +1,4 @@
-"""Audit Set 2: sealed post-repair policy-envelope evaluation (USENIX revision, review section 9.6).
+"""Audit Set 2: sealed post-repair policy-envelope evaluation (earlier revision, review section 9.6).
 
 Discipline. The 54-case context matrix is now Audit Set 1 and is a DIAGNOSTIC set: its failures were
 used to revise the policy architecture (semantic normalization, fail-safe coverage, fault and staleness

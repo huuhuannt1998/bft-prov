@@ -1,4 +1,4 @@
-# Deterministic smart-home safety verifier (IoT-J revision).
+# Deterministic smart-home safety verifier (earlier revision).
 #
 # This is the mechanism the paper calls load-bearing, so it is specified and evaluated rather than
 # asserted. It is evaluated OUTSIDE any model, on a structured action + context record, and returns
@@ -102,7 +102,7 @@ deny_rules contains "AC6" if {
 	cmd in {"disarm", "turn_off", "disable"}
 }
 
-# --- semantic access rules (USENIX revision). AC2-AC4 key on the `lock` entity domain, which is why
+# --- semantic access rules (earlier revision). AC2-AC4 key on the `lock` entity domain, which is why
 # the audit found garage doors, gates and window covers permitted: the platform exposes their release as
 # `turn_on` or `open` on a different domain. These restate the same policy intent over the semantic
 # class, so any device the registry declares as an access role is governed regardless of its service name.
@@ -250,7 +250,7 @@ deny_rules contains "TS4" if {
 
 
 # ================================================================ semantic action normalization
-# USENIX revision, review section 9.4. String matching on device names is fragile: the held-out audit
+# earlier revision, review section 9.4. String matching on device names is fragile: the held-out audit
 # failed precisely where an access device exposes "open" as `turn_on`, so a rule keyed on the command
 # string missed it. Normalization maps the platform representation to a semantic action class, and the
 # policy is written against the class.

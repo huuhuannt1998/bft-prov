@@ -67,7 +67,7 @@ sys.path.insert(0, ROOT)
 
 from decorrelation.analyze_quorum import (Agent, load_agents, pb_tail, stratified_split,  # noqa: E402
                                           category_of, dependence_agent_cluster)
-from decorrelation.corpus_tdsc import build_tdsc_corpus, TDSC_LEGIT  # noqa: E402
+from decorrelation.corpus_main import build_corpus, LEGIT_TASKS  # noqa: E402
 from decorrelation.split_legit import legit_split  # noqa: E402
 
 SEED = 20260801
@@ -297,8 +297,8 @@ def main() -> None:
     pool = sorted([a for a in agents if a.defense != "none"], key=lambda a: a.key)
     byname = {a.key: a for a in agents}
     canon = json.load(open(CANON))
-    inj_cases = {c.cid: c for c in build_tdsc_corpus()}
-    leg_cases = {c.cid: c for c in TDSC_LEGIT}
+    inj_cases = {c.cid: c for c in build_corpus()}
+    leg_cases = {c.cid: c for c in LEGIT_TASKS}
 
     print(f"agents {len(agents)} | defended pool {len(pool)} | payloads {len(items['inj'])} "
           f"({len(train_idx)} train / {len(test_idx)} held out) | legit {len(items['legit'])} "

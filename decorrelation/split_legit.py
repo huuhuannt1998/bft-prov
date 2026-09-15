@@ -1,4 +1,4 @@
-"""P0-C: honest legitimate-task split, and LAAR in place of "utility" (USENIX revision).
+"""P0-C: honest legitimate-task split, and LAAR in place of "utility" (earlier revision).
 
 Reviewer objection this closes: the best-security-utility (BSU) composition rule selected members using
 ALL legitimate tasks, so its reported 100% acceptance was in-sample. The manuscript disclosed this, but
@@ -35,8 +35,8 @@ N_BOOT = 1000
 
 def legit_split(items, seed=SEED):
     """Stratify the legitimate corpus by target action so both halves cover the same action space."""
-    from decorrelation.corpus_tdsc import build_tdsc_corpus
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    from decorrelation.corpus_main import build_corpus
+    cases = {c.cid: c for c in build_corpus()}
     key = [f"{cases[c].device}|{cases[c].command}" if c in cases else "unknown" for c in items["legit"]]
     rng = random.Random(seed)
     dev, hold = [], []

@@ -1,4 +1,4 @@
-"""Temperature sensitivity (USENIX revision, review section 7).
+"""Temperature sensitivity (earlier revision, review section 7).
 
 The objection this answers: at temperature 0 the models are near-deterministic, so of course replicas
 of one configuration agree, and maybe the whole shared-failure result is an artifact of greedy decoding.
@@ -45,8 +45,8 @@ def main() -> None:
     agents, raw, items = load_agents()
     catmap = category_of(items["inj"])
     _, test_idx = stratified_split(items["inj"], catmap)
-    from decorrelation.corpus_tdsc import build_tdsc_corpus
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    from decorrelation.corpus_main import build_corpus
+    cases = {c.cid: c for c in build_corpus()}
     ids = [items["inj"][i] for i in test_idx][::a.stride]
     print(f"{len(CONFIGS)} configs x {len(TEMPS)} temperatures x {len(ids)} payloads x {a.reps} reps "
           f"= {len(CONFIGS)*len(TEMPS)*len(ids)*a.reps} inferences", flush=True)

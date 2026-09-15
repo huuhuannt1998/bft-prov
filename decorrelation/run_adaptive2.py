@@ -1,4 +1,4 @@
-"""Run the expanded adaptive corpus against the representative quorum agents (USENIX revision).
+"""Run the expanded adaptive corpus against the representative quorum agents (earlier revision).
 
 Review section 8.3: do not rerun the whole 65-agent matrix. The union of members across the canonical
 sets for HOM-3of5, FD-3of5, JD-3of5, JD-5of7 and BSU-3of5 is 20 agents, which is what this evaluates.

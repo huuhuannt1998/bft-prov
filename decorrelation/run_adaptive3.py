@@ -1,4 +1,4 @@
-"""Run adaptive grammar v2 against the same 20 representative agents as v1 (USENIX revision).
+"""Run adaptive grammar v2 against the same 20 representative agents as v1 (earlier revision).
 
 Identical evaluation frame to run_adaptive2 -- same agent union, same repetition count -- so v1 and v2
 are directly comparable and the only thing that changes is the grammar.

@@ -1,4 +1,4 @@
-"""Tail risk and payload difficulty (USENIX revision, review sections 17 and 18).
+"""Tail risk and payload difficulty (earlier revision, review sections 17 and 18).
 
 The attacker chooses the payload, so mean attack success is the wrong summary statistic for a security
 claim. What matters is the upper tail: if a minority of payloads reliably defeats many validators at

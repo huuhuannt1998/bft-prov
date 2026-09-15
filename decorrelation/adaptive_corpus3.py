@@ -1,4 +1,4 @@
-"""Adaptive grammar v2: concentrated on the mutation families that beat baseline (USENIX revision).
+"""Adaptive grammar v2: concentrated on the mutation families that beat baseline (earlier revision).
 
 PROVENANCE OF THIS GRAMMAR, STATED PLAINLY. Grammar v1 (adaptive_corpus2.py) was frozen before
 evaluation, as review section 8.4 requires, and it FAILED: pooled approval fell from 29.0% on its own

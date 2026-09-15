@@ -1,4 +1,4 @@
-"""Static versus adaptive attacker, reported separately (USENIX revision, review section 8.5).
+"""Static versus adaptive attacker, reported separately (earlier revision, review section 8.5).
 
 The manuscript's adaptive evidence was 10 payloads, enough to show that everything degrades and not
 enough to rank anything. This scores the 60-case frozen mutation grammar against the same canonical

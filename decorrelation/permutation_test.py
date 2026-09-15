@@ -1,4 +1,4 @@
-"""P0-A: aligned versus payload-permuted joint approval (USENIX revision).
+"""P0-A: aligned versus payload-permuted joint approval (earlier revision).
 
 The reviewer objection this closes: joint failure above the product of pooled marginals is a predictable
 consequence of heterogeneous payload difficulty, not a surprising failure mode. That objection is right
