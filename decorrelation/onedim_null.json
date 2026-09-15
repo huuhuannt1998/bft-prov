@@ -1,0 +1,10 @@
+{
+ "observed_rho": 0.9845162641232981,
+ "null_mean": 0.9283026646628904,
+ "null_ci": [
+  0.9120333269367862,
+  0.9447449224697326
+ ],
+ "n_null": 200,
+ "note": "null shuffles each agent's payload votes independently, preserving per-agent marginals and destroying shared payload difficulty"
+}

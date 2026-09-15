@@ -1,10 +1,10 @@
-# Fault-Domain Threat Model — PQ-BFT-Prov (TDSC redesign)
+# Fault-Domain Threat Model — PQ-BFT-Prov (the study redesign)
 
 **Status:** Phase 0 canonical reference. Every later phase (corpus/defense-matrix design,
 quorum-policy implementation, formal modeling, manuscript) cites this document rather than
 re-deriving the taxonomy, adversaries, TCB, or dependability goals.
 
-**Source of truth:** this document operationalizes `docs/superpowers/specs/2026-07-17-tdsc-fault-domain-redesign-design.md`
+**Source of truth:** this document is self-contained; the internal design note it was derived from is not part of the artifact
 §3–§5 and `manuscripts/IEEE_TDSC_PQ_BFT_Prov_Full_Feedback.md` §7.1, §7.3, §11.4. Where the two
 disagree in wording, the review (`IEEE_TDSC_PQ_BFT_Prov_Full_Feedback.md`) is the authoritative
 source for adversary/goal/TCB language, and the design spec is authoritative for which domains

@@ -1,0 +1,16 @@
+{
+ "homogeneous": {
+  "resisted_pct": 75.10014619883042,
+  "sub_threshold_pct": 0.05701754385964912,
+  "approved_pct": 24.84283625730994,
+  "n": 136800,
+  "share_of_misses_subthreshold": 0.07586441667071925
+ },
+ "joint-diverse": {
+  "resisted_pct": 24.81140350877193,
+  "sub_threshold_pct": 66.19298245614036,
+  "approved_pct": 8.788742690058479,
+  "n": 136800,
+  "share_of_misses_subthreshold": 72.73603547158899
+ }
+}

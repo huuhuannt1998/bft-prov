@@ -1,0 +1,11 @@
+{
+  "n_signers": 5,
+  "distinct_pids": 5,
+  "cross_signer_refused": true,
+  "own_key_signing": true,
+  "secret_leaked_in_response": false,
+  "insecure_paths": [],
+  "ms_per_signature_uds": 0.5907291701684396,
+  "ms_five_signatures_sequential": 2.2813389000172415,
+  "claim": "per-signer OS process separation on one host; root/kernel compromise is outside the defended boundary"
+}

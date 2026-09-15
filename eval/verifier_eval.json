@@ -125,7 +125,8 @@
       "expect": "deny",
       "got": "deny",
       "rules": [
-        "AC2"
+        "AC2",
+        "AC7"
       ],
       "ok": true
     },
@@ -154,7 +155,8 @@
       "expect": "escalate",
       "got": "escalate",
       "rules": [
-        "AC3"
+        "AC3",
+        "AC8"
       ],
       "ok": true
     },
@@ -236,7 +238,9 @@
       "expect": "deny",
       "got": "deny",
       "rules": [
-        "AP2"
+        "AP2",
+        "SF1",
+        "SF2"
       ],
       "ok": true
     },
@@ -298,7 +302,8 @@
       "expect": "deny",
       "got": "deny",
       "rules": [
-        "SI1"
+        "SI1",
+        "SF3"
       ],
       "ok": true
     },
@@ -439,10 +444,10 @@
   "false_permits": 0,
   "false_denials": 0,
   "latency_ms": {
-    "mean": 0.3594232098354648,
-    "p50": 0.3177080361638218,
-    "p95": 0.529915967490524,
-    "subprocess_cold_ms": 12.157375051174313
+    "mean": 0.6019994933333331,
+    "p50": 0.5542709999999951,
+    "p95": 0.850208000000019,
+    "subprocess_cold_ms": 14.201291999999977
   },
   "by_family": {
     "LS": {

@@ -19,11 +19,11 @@ import numpy as np
 import pandas as pd
 from statsmodels.genmod.bayes_mixed_glm import BinomialBayesMixedGLM
 
-from decorrelation.corpus_tdsc import build_tdsc_corpus
+from decorrelation.corpus_main import build_corpus
 from decorrelation.model_matrix import MATRIX
 from decorrelation.stats import phi_coeff
 
-_CASE = {c.cid: c for c in build_tdsc_corpus()}
+_CASE = {c.cid: c for c in build_corpus()}
 _CFG = {m.tag: m for m in MATRIX}
 
 

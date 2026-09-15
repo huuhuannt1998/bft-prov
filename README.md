@@ -1,7 +1,8 @@
 # Correlated Prompt-Injection Failures in LLM-Agent Quorums
 
-Artifact for the IEEE Internet of Things Journal submission *"Correlated Prompt-Injection Failures in
-LLM-Agent Quorums for Accountable Smart-Home Actuation"* (Huan Bui).
+Artifact for the submission *"Correlated Prompt-Injection Failures in LLM-Agent Quorums for
+Accountable Smart-Home Actuation"*, under double-anonymous review at ACM Transactions on Internet of
+Things. Author identification is omitted here for the duration of that review.
 
 Replicating an LLM agent and requiring a quorum before a high-risk actuation is only as good as the
 assumption that replicas will not approve the same attack. This artifact contains the measurement that
@@ -12,7 +13,7 @@ built on the result.
 
 | Component | Path |
 |---|---|
-| Attack, legitimate-task and control corpora | `decorrelation/corpus_tdsc.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
+| Attack, legitimate-task and control corpora | `decorrelation/corpus_main.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
 | Six prompt-level defenses | `decorrelation/defenses.py` |
 | **Raw per-repetition votes, 78 agents** | `decorrelation/rq1/*.json` |
 | Dependence and quorum analysis | `decorrelation/analyze_quorum.py`, `decorrelation/canonical_quorums.py` |
@@ -21,6 +22,7 @@ built on the result.
 | Certificate overhead, faults, verifier evaluation | `eval/` |
 | Constrained-platform benchmark | `edge/bench_gateway.py`, `edge/Dockerfile.constrained` |
 | Machine-checked domain-coverage model | `formal/tla/DomainCoverage.tla` |
+| Manuscript and supplementary sources | `manuscripts/` |
 
 `ARTIFACT.md` maps every number in the paper to the file and command that produces it.
 
@@ -105,11 +107,13 @@ Stated so the artifact is not read for more than it shows. Actuation is emulated
 modes are modeled rather than observed. Agents hold distinct logical signing keys but share one process
 on one host, so the prototype supplies none of the process, key-store, or machine independence a
 deployment would want. The constrained measurement in `edge/` fixes operating system, instruction set,
-core count and memory but not microarchitecture. The verifier is correct on 34 of 54 held-out
-action-context combinations; that limit is measured and reported rather than repaired against the test
-set. The domain-coverage theorem is machine-checked at one bounded configuration and concerns
+core count and memory but not microarchitecture. The verifier scores 140 of 150 on the sealed Audit
+Set 2, with 6 false permits and 4 false denials; the 54-case context matrix that preceded it is
+diagnostic rather than held-out, because its failures drove the fail-safe repair. The domain-coverage theorem is machine-checked at one bounded configuration and concerns
 certificate formation, not semantic safety.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see `LICENSE`. Third-party files keep their own terms: the ACM `acmart.cls` and
+`ACM-Reference-Format.bst` shipped with the manuscript are distributed by the ACM under the LaTeX
+Project Public License.

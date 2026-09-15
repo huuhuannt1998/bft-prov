@@ -37,17 +37,6 @@ _apalache-out/
 x-*.tla
 *.itf.json
 
-# Manuscript build artifacts (source is tracked; PDFs are tracked deliberately)
-manuscripts/*.aux
-manuscripts/*.log
-manuscripts/*.blg
-manuscripts/*.bbl
-manuscripts/*.out
-manuscripts/sections/*.log
+# Manuscript build artifacts. The manuscript tree carries its own .gitignore, which matches at any
+# depth and so covers paper/ and supplementary/ since the split; only texput.log lands out here.
 texput.log
-
-# Pre-submission review notes: internal working documents, not part of the artifact
-manuscripts/feedback/
-
-# Manuscript sources are deliberately not published with this artifact.
-manuscripts/

@@ -1,0 +1,407 @@
+{
+ "new_inference": false,
+ "draws": 2000,
+ "mixed_effects": {
+  "attempted": false,
+  "reason": "statsmodels unavailable",
+  "fallback": "two-way cluster bootstrap, predeclared in 11.4"
+ },
+ "hardest_baseline": {
+  "E_pp": 5.366438356164383,
+  "ci_pp": [
+   4.059503424657533,
+   6.730662915851271
+  ],
+  "l3_E_pp": 2.0855675146771033,
+  "l3_ci_pp": [
+   0.3382093933463796,
+   3.8622688356164385
+  ],
+  "l3_beats_it": false,
+  "capability": {
+   "record_version": "1.0",
+   "actor": "attacker",
+   "observability_level": "hardest_decile",
+   "knowledge": {
+    "per_agent_dev_asr": true,
+    "composition_rule": false,
+    "realized_member_set": false,
+    "vote_oracle": false,
+    "benign_corpus": false,
+    "verifier_policy": false
+   },
+   "budget": {
+    "oracle_queries": 22230,
+    "unit": "agent-payload evaluations"
+   },
+   "constraints": {
+    "temperature": 0.0,
+    "repetitions": 3,
+    "member_set_draws": 2000,
+    "fair_contrast": true,
+    "seed": 20260801,
+    "held_out_scoring": true
+   },
+   "substrate": {
+    "pool_size": 65,
+    "agents_voted": 65,
+    "new_inference": false
+   }
+  }
+ },
+ "matched_budget": {
+  "250": {
+   "l1": {
+    "E_pp": 0.3677103718199607,
+    "ci_pp": [
+     -0.19693248532289628,
+     0.8830393835616436
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l1_matched",
+     "knowledge": {
+      "per_agent_dev_asr": true,
+      "composition_rule": false,
+      "realized_member_set": false,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 250,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   },
+   "l3": {
+    "E_pp": -1.4695205479452056,
+    "ci_pp": [
+     -2.1609760273972602,
+     -0.7383378180039144
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l3",
+     "knowledge": {
+      "per_agent_dev_asr": false,
+      "composition_rule": true,
+      "realized_member_set": true,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 250,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   }
+  },
+  "1000": {
+   "l1": {
+    "E_pp": 0.48727984344422687,
+    "ci_pp": [
+     0.0038539628180037926,
+     0.9655858610567513
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l1_matched",
+     "knowledge": {
+      "per_agent_dev_asr": true,
+      "composition_rule": false,
+      "realized_member_set": false,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 1000,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   },
+   "l3": {
+    "E_pp": 0.4409001956947161,
+    "ci_pp": [
+     -1.1646318493150687,
+     2.1525366927592953
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l3",
+     "knowledge": {
+      "per_agent_dev_asr": false,
+      "composition_rule": true,
+      "realized_member_set": true,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 1000,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   }
+  },
+  "5000": {
+   "l1": {
+    "E_pp": 0.36751467710371805,
+    "ci_pp": [
+     -0.4353290117416833,
+     1.1199266144814086
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l1_matched",
+     "knowledge": {
+      "per_agent_dev_asr": true,
+      "composition_rule": false,
+      "realized_member_set": false,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 5000,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   },
+   "l3": {
+    "E_pp": 3.5628180039138937,
+    "ci_pp": [
+     1.642420499021526,
+     5.317906066536204
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l3",
+     "knowledge": {
+      "per_agent_dev_asr": false,
+      "composition_rule": true,
+      "realized_member_set": true,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 5000,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   }
+  },
+  "11115": {
+   "l1": {
+    "E_pp": 2.6941291585127205,
+    "ci_pp": [
+     1.5938246086105679,
+     3.728197162426614
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l1_matched",
+     "knowledge": {
+      "per_agent_dev_asr": true,
+      "composition_rule": false,
+      "realized_member_set": false,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 11115,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   },
+   "l3": {
+    "E_pp": 3.380332681017612,
+    "ci_pp": [
+     1.6185738747553815,
+     5.267572162426614
+    ],
+    "capability": {
+     "record_version": "1.0",
+     "actor": "attacker",
+     "observability_level": "l3",
+     "knowledge": {
+      "per_agent_dev_asr": false,
+      "composition_rule": true,
+      "realized_member_set": true,
+      "vote_oracle": false,
+      "benign_corpus": false,
+      "verifier_policy": false
+     },
+     "budget": {
+      "oracle_queries": 11115,
+      "unit": "agent-payload evaluations"
+     },
+     "constraints": {
+      "temperature": 0.0,
+      "repetitions": 3,
+      "member_set_draws": 2000,
+      "fair_contrast": true,
+      "seed": 20260801,
+      "held_out_scoring": true
+     },
+     "substrate": {
+      "pool_size": 65,
+      "agents_voted": 65,
+      "new_inference": false
+     }
+    }
+   }
+  }
+ },
+ "threshold_sweep": {
+  "2": {
+   "D0_pp": -10.621783625730997,
+   "E_pp": 19.091291585127202,
+   "ci_pp": [
+    17.353109099804307,
+    20.81804794520548
+   ]
+  },
+  "3": {
+   "D0_pp": 14.799269005847956,
+   "E_pp": 1.7857142857142854,
+   "ci_pp": [
+    0.027476761252445865,
+    3.6451382093933455
+   ]
+  },
+  "4": {
+   "D0_pp": 22.586988304093566,
+   "E_pp": -18.936350293542073,
+   "ci_pp": [
+    -20.42403864970646,
+    -17.499635518591
+   ]
+  },
+  "5": {
+   "D0_pp": 23.692982456140353,
+   "E_pp": -24.286839530332678,
+   "ci_pp": [
+    -25.551409001956948,
+    -22.995996819960858
+   ]
+  }
+ },
+ "pool_ablation": {
+  "n_agents": 43,
+  "D0_pp": 3.0561403508771927,
+  "E_pp": -20.268982387475535,
+  "ci_pp": [
+   -21.400911203522504,
+   -19.078555528375738
+  ]
+ },
+ "greedy_vs_exact": {
+  "mean_ratio": 1.0,
+  "min_ratio": 1.0,
+  "bound": 0.6321205588285577,
+  "caveat": "top-k selection under a fixed per-payload score is exactly optimal for a mean objective, so this exercises selection rather than ALG-3's coverage objective; it bounds nothing about coverage greedy and is reported as such"
+ }
+}

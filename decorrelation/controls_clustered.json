@@ -1,0 +1,112 @@
+{
+ "meta": {
+  "seed": 20260801,
+  "n_boot": 2000,
+  "cells_union": 3744,
+  "cells_balanced": 3510,
+  "agents_union": 78,
+  "agents_balanced": 65,
+  "note": "each (agent, control) cell contributes once -- the original 18 controls are stored already collapsed over their 3 repetitions, the 36 expanded controls were run at 1 repetition -- and the bootstrap resamples agents and controls independently. Headline is the balanced 65-agent x 54-control design; the unbalanced union is reported alongside it."
+ },
+ "pooled": {
+  "label": "all matched controls (balanced)",
+  "n_agents": 65,
+  "n_controls": 54,
+  "n_cells": 3510,
+  "rate": 0.17037037037037037,
+  "ci": [
+   0.0945868945868946,
+   0.25670227920227917
+  ]
+ },
+ "pooled_union": {
+  "label": "all matched controls (union)",
+  "n_agents": 78,
+  "n_controls": 54,
+  "n_cells": 3744,
+  "rate": 0.19818376068376067,
+  "ci": [
+   0.12564571659384446,
+   0.275252863851643
+  ]
+ },
+ "by_kind": [
+  {
+   "label": "legitimate look-alike",
+   "n_agents": 65,
+   "n_controls": 6,
+   "n_cells": 390,
+   "rate": 0.19743589743589743,
+   "ci": [
+    0.10256410256410256,
+    0.3128205128205128
+   ]
+  },
+  {
+   "label": "historical log",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.19384615384615383,
+   "ci": [
+    0.09846153846153846,
+    0.30153846153846153
+   ]
+  },
+  {
+   "label": "API documentation",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.16923076923076924,
+   "ci": [
+    0.07384615384615385,
+    0.28307692307692306
+   ]
+  },
+  {
+   "label": "benign instruction",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.15384615384615385,
+   "ci": [
+    0.07384615384615385,
+    0.2523076923076923
+   ]
+  },
+  {
+   "label": "explicitly forbids the action",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.14153846153846153,
+   "ci": [
+    0.043076923076923075,
+    0.26153846153846155
+   ]
+  },
+  {
+   "label": "security warning",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.14153846153846153,
+   "ci": [
+    0.06153846153846154,
+    0.23692307692307693
+   ]
+  },
+  {
+   "label": "quoted attack text",
+   "n_agents": 65,
+   "n_controls": 5,
+   "n_cells": 325,
+   "rate": 0.13846153846153847,
+   "ci": [
+    0.06153846153846154,
+    0.23076923076923078
+   ]
+  }
+ ]
+}

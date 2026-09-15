@@ -1,4 +1,4 @@
-"""Pluggable prompt-level injection defenses over the shared Ollama vote path (TDSC RQ1).
+"""Pluggable prompt-level injection defenses over the shared Ollama vote path (the study RQ1).
 
 Each defense is a deterministic prompt/probe builder — testable without a model. All are FREE and
 prompt-level; `hierarchy`/`struq` are principled surrogates of published defenses (we cannot retrain
@@ -6,6 +6,7 @@ local weights), labelled as such per the existing StruQ file. Ingested content i
 """
 from __future__ import annotations
 import json
+import os
 import urllib.request
 
 from consensus.model_vote import parse_vote, OLLAMA, VOTE_SYSTEM, VOTE_SYSTEM_NEUTRAL, vote_prompt
@@ -42,7 +43,7 @@ class OllamaError(Exception):
 
 
 def _ollama_chat(model_tag: str, system: str, user: str, timeout: float = 120.0,
-                  num_predict: int = 80, attempts: int = 3) -> str:
+                  num_predict: int = 80, attempts: int = 3, temperature: float = 0.0) -> str:
     """POST one chat completion to Ollama, retrying transport failures up to `attempts` times.
     Returns the response's message content on success; raises `OllamaError` (never a silent
     default) once attempts are exhausted, covering URLError/timeout, a non-200 status, a
@@ -50,7 +51,12 @@ def _ollama_chat(model_tag: str, system: str, user: str, timeout: float = 120.0,
     body = json.dumps({"model": model_tag,
                        "messages": [{"role": "system", "content": system},
                                     {"role": "user", "content": user}],
-                       "stream": False, "options": {"temperature": 0.0, "num_predict": num_predict}}).encode()
+                       "stream": False,
+                       "options": {"temperature": temperature, "num_predict": num_predict},
+                       # Keep the weights resident between calls. Without this the model is evicted
+                       # under memory pressure and every request pays a ~70 s cold load, which made a
+                       # 4,050-inference sweep take days rather than hours.
+                       "keep_alive": os.environ.get("OLLAMA_KEEP_ALIVE", "30m")}).encode()
     last_err: Exception | None = None
     for _ in range(attempts):
         try:
@@ -91,16 +97,21 @@ def build_prompt(defense: str, device: str, command: str, trusted_task: str, ing
 
 class DefenseJudge:
     """A JudgeFn-compatible voter that applies a named prompt-level defense on the Ollama vote path."""
-    def __init__(self, model_tag: str, defense: str, timeout: float = 120.0):
+    def __init__(self, model_tag: str, defense: str, timeout: float = 120.0,
+                 temperature: float = 0.0):
         if defense not in PROMPT_DEFENSES:
             raise ValueError(f"unknown defense: {defense}")
         self.model_tag = model_tag
         self.defense = defense
         self.timeout = timeout
+        # Defaults to 0.0 so every result produced before the temperature-sensitivity experiment is
+        # reproduced bit for bit; only that experiment passes a non-zero value.
+        self.temperature = temperature
 
     def __call__(self, device: str, command: str, context: str, ingested: str) -> bool:
         system, user = build_prompt(self.defense, device, command, context, ingested)
-        content = _ollama_chat(self.model_tag, system, user, self.timeout)
+        content = _ollama_chat(self.model_tag, system, user, self.timeout,
+                               temperature=self.temperature)
         return parse_vote(content)
 
 

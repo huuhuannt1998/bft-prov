@@ -1,10 +1,10 @@
-# RQ1 Pre-registration — Correlated-Failure Study (PQ-BFT-Prov, TDSC redesign)
+# RQ1 Pre-registration — Correlated-Failure Study (PQ-BFT-Prov, the study redesign)
 
 **Status:** Phase 0 canonical reference, frozen before any RQ1 result is read. `decorrelation/analyze_rq1.py`
 (Phase 1) must conform to this document; every RQ1 table in the manuscript cites its "pre-registered" status
 against this document, not against a plan written after seeing the data.
 
-**Source of truth:** this document operationalizes `docs/superpowers/specs/2026-07-17-tdsc-fault-domain-redesign-design.md`
+**Source of truth:** this document is self-contained; the internal design note it was derived from is not part of the artifact
 §7 (RQ1) and reuses the domain taxonomy and terminology fixed in the sibling document
 `docs/02-fault-domain-model/threat-model.md` (`lineage`/`family`, `size`, `defense`, `quantization/runtime`,
 `isolation/key-domain`; adversary A, the content attacker, is the adversary this study measures). Where this

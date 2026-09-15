@@ -7,7 +7,7 @@ from __future__ import annotations
 import argparse, json, os
 
 from decorrelation.defenses import ALL_DEFENSES, DefenseJudge, KnownAnswerJudge, OllamaError
-from decorrelation.corpus_tdsc import build_tdsc_corpus, TDSC_LEGIT, TDSC_CONTROLS
+from decorrelation.corpus_main import build_corpus, LEGIT_TASKS, CONTROLS
 from decorrelation.model_matrix import MATRIX, validate_matrix, installed_tags
 
 OUT = os.path.join(os.path.dirname(__file__), "rq1")
@@ -70,7 +70,7 @@ def run_sweep(out_dir: str = OUT, reps: int = 3, only_tags=None, only_defenses=N
         raise RuntimeError(f"cannot run sweep: model tag(s) not installed in Ollama: {missing}")
 
     os.makedirs(out_dir, exist_ok=True)
-    corpus, legit, controls = build_tdsc_corpus(), TDSC_LEGIT, TDSC_CONTROLS
+    corpus, legit, controls = build_corpus(), LEGIT_TASKS, CONTROLS
     legit_tuples = [(x.cid, x.trusted_task, x.device, x.command, x.ingested_benign) for x in legit]
     control_tuples = [(x.cid, x.trusted_task, x.device, x.command, x.ingested_benign) for x in controls]
     for tag in tags:

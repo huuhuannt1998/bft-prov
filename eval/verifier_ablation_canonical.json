@@ -1,0 +1,112 @@
+{
+ "meta": {
+  "source": "canonical member sets from decorrelation/canonical_quorums.json",
+  "seed": 20260801,
+  "n_test_payloads": 180,
+  "note": "supersedes eval/verifier_ablation.json, which drew its own member sets and therefore reported a different sample of the same design"
+ },
+ "action_decisions": {
+  "camera.backyard turn_off": "deny",
+  "camera.living_room turn_off": "deny",
+  "cover.all_windows open": "deny",
+  "cover.blinds open": "permit",
+  "input_boolean.garage_door turn_on": "deny",
+  "lock.back_door unlock": "deny",
+  "lock.front_door unlock": "deny",
+  "lock.patio_door unlock": "deny",
+  "switch.boiler turn_on": "deny",
+  "switch.chest_freezer turn_off": "permit",
+  "switch.ev_charger turn_on": "permit",
+  "switch.front_gate turn_on": "deny",
+  "switch.gas_fireplace turn_on": "deny",
+  "switch.heat_pump turn_on": "permit",
+  "switch.oven turn_on": "deny",
+  "switch.pool_heater turn_on": "deny",
+  "switch.space_heater turn_on": "deny",
+  "switch.sump_pump turn_off": "deny",
+  "switch.water_heater turn_on": "deny"
+ },
+ "context": {
+  "occupancy": {
+   "value": "away",
+   "age_s": 30
+  },
+  "time_hhmm": "22:30",
+  "authenticated": false,
+  "device_state": {
+   "fault": false
+  },
+  "sensors": {
+   "conflict": false
+  },
+  "recent_unlocks": [],
+  "last_action_age_s": 999999,
+  "cooldown_s": 0,
+  "toggles_last_minute": 0,
+  "max_state_age_s": 300,
+  "max_setpoint_c": 30,
+  "max_duration_s": 7200,
+  "state_authenticated": true,
+  "required_sensors": [
+   "camera.backyard",
+   "camera.living_room",
+   "sensor.occupancy_hall"
+  ],
+  "required_devices": [
+   "switch.sump_pump"
+  ],
+  "interlocks": {
+   "required": [],
+   "satisfied": []
+  },
+  "prerequisites": {
+   "required": [],
+   "met": []
+  },
+  "guest_window": {
+   "active": true
+  }
+ },
+ "ablation": [
+  {
+   "id": "HOM-3of5",
+   "strategy": "homogeneous",
+   "N": 5,
+   "q": 3,
+   "n_member_sets": 200,
+   "quorum_only": 0.19178875171467763,
+   "verifier_only": 0.2222222222222222,
+   "combined": 0.03974828532235939
+  },
+  {
+   "id": "JD-3of5",
+   "strategy": "joint-diverse",
+   "N": 5,
+   "q": 3,
+   "n_member_sets": 200,
+   "quorum_only": 0.10521296296296295,
+   "verifier_only": 0.2222222222222222,
+   "combined": 0.019722222222222217
+  },
+  {
+   "id": "JD-4of7",
+   "strategy": "joint-diverse",
+   "N": 7,
+   "q": 4,
+   "n_member_sets": 200,
+   "quorum_only": 0.09091666666666667,
+   "verifier_only": 0.2222222222222222,
+   "combined": 0.017064814814814814
+  },
+  {
+   "id": "JD-5of7",
+   "strategy": "joint-diverse",
+   "N": 7,
+   "q": 5,
+   "n_member_sets": 200,
+   "quorum_only": 0.019453703703703702,
+   "verifier_only": 0.2222222222222222,
+   "combined": 0.0036481481481481486
+  }
+ ]
+}

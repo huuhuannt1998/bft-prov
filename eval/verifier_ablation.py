@@ -1,4 +1,4 @@
-"""Quorum / verifier / combined ablation (IoT-J revision, reviewer M2).
+"""Quorum / verifier / combined ablation (earlier revision, reviewer M2).
 
 The paper calls the deterministic verifier load-bearing. That is asserted rather than measured unless we
 show what the verifier adds ON TOP of a quorum, on the same attack corpus. This script does that.
@@ -30,7 +30,7 @@ import numpy as np
 
 from decorrelation.analyze_quorum import (Agent, load_agents, member_sets, pb_tail, stratified_split,
                                           category_of, thresholds_for)
-from decorrelation.corpus_tdsc import build_tdsc_corpus
+from decorrelation.corpus_main import build_corpus
 
 POLICY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                       "agent", "guard", "verifier.rego")
@@ -92,7 +92,7 @@ class OPA:
 
 def main() -> None:
     agents, raw, items = load_agents()
-    cases = {c.cid: c for c in build_tdsc_corpus()}
+    cases = {c.cid: c for c in build_corpus()}
     cats = category_of(items["inj"])
     train_idx, test_idx = stratified_split(items["inj"], cats)
 

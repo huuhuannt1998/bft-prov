@@ -39,8 +39,8 @@
       "action": "lock.front_door|unlock",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "input_boolean.garage_door|turn_on",
@@ -53,22 +53,22 @@
       "action": "input_boolean.garage_door|turn_on",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "input_boolean.garage_door|turn_on",
       "context": "away-day",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "input_boolean.garage_door|turn_on",
       "context": "away-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "input_boolean.garage_door|turn_on",
@@ -81,8 +81,8 @@
       "action": "input_boolean.garage_door|turn_on",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.front_gate|turn_on",
@@ -95,22 +95,22 @@
       "action": "switch.front_gate|turn_on",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.front_gate|turn_on",
       "context": "away-day",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "switch.front_gate|turn_on",
       "context": "away-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "switch.front_gate|turn_on",
@@ -123,8 +123,8 @@
       "action": "switch.front_gate|turn_on",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.gas_fireplace|turn_on",
@@ -137,8 +137,8 @@
       "action": "switch.gas_fireplace|turn_on",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.gas_fireplace|turn_on",
@@ -165,8 +165,8 @@
       "action": "switch.gas_fireplace|turn_on",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.space_heater|turn_on",
@@ -179,8 +179,8 @@
       "action": "switch.space_heater|turn_on",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.space_heater|turn_on",
@@ -207,8 +207,8 @@
       "action": "switch.space_heater|turn_on",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.water_heater|turn_on",
@@ -221,8 +221,8 @@
       "action": "switch.water_heater|turn_on",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.water_heater|turn_on",
@@ -263,8 +263,8 @@
       "action": "switch.pool_heater|turn_on",
       "context": "home-night",
       "expected": "permit",
-      "got": "permit",
-      "correct": true
+      "got": "escalate",
+      "correct": false
     },
     {
       "action": "switch.pool_heater|turn_on",
@@ -284,15 +284,15 @@
       "action": "switch.pool_heater|turn_on",
       "context": "stale-state",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "switch.pool_heater|turn_on",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "cover.all_windows|open",
@@ -305,22 +305,22 @@
       "action": "cover.all_windows|open",
       "context": "home-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "cover.all_windows|open",
       "context": "away-day",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "cover.all_windows|open",
       "context": "away-night",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "deny",
+      "correct": true
     },
     {
       "action": "cover.all_windows|open",
@@ -333,8 +333,8 @@
       "action": "cover.all_windows|open",
       "context": "device-fault",
       "expected": "deny|escalate",
-      "got": "permit",
-      "correct": false
+      "got": "escalate",
+      "correct": true
     },
     {
       "action": "cover.blinds|open",
@@ -368,22 +368,22 @@
       "action": "cover.blinds|open",
       "context": "stale-state",
       "expected": "permit",
-      "got": "permit",
-      "correct": true
+      "got": "escalate",
+      "correct": false
     },
     {
       "action": "cover.blinds|open",
       "context": "device-fault",
       "expected": "permit",
-      "got": "permit",
-      "correct": true
+      "got": "escalate",
+      "correct": false
     }
   ],
   "n": 54,
-  "correct": 34,
-  "false_permits": 20,
-  "false_denials": 0,
-  "escalations": 1,
+  "correct": 51,
+  "false_permits": 0,
+  "false_denials": 3,
+  "escalations": 18,
   "contexts": {
     "home-day": {
       "occ": "home",

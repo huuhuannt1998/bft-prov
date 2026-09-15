@@ -1,7 +1,7 @@
 # Artifact Evaluation Guide
 
 Artifact for *"Correlated Prompt-Injection Failures in LLM-Agent Quorums for Accountable Smart-Home
-Actuation"* (IEEE Internet of Things Journal). This guide maps each reported number to the file that
+Actuation"* (submitted to ACM Transactions on Internet of Things). This guide maps each reported number to the file that
 holds it and the command that regenerates it. All paths are relative to the repository root; run with
 `export PYTHONPATH=.`.
 
@@ -80,7 +80,10 @@ checking at one configuration and concerns certificate formation, not semantic s
 |---|---|---|
 | 24-rule bundle, 42/42 policy-intent suite; 0.36 ms mean, 0.53 ms p95 | `python -m eval.verifier_eval` | `eval/verifier_eval.json` |
 | Held-out coverage audit over 19 action classes | `python -m eval.verifier_ablation` | `eval/verifier_ablation.json`, `eval/action_split.json` |
-| Context matrix: 34 of 54 correct, 20 false permits | `python -m eval.verifier_contexts` | `eval/verifier_contexts.json` |
+| Audit Set 1 (context matrix), diagnostic: 51 of 54 post-repair, 0 false permits, 3 false denials | `python -m eval.verifier_contexts` | `eval/verifier_contexts.json` |
+| **Audit Set 2 (sealed), the reported coverage result: 140 of 150, 6 false permits, 4 false denials** | `python -m eval.audit_set2` | `eval/audit_set2.json`, `eval/audit_set2_manifest.json` |
+| Tiered operating point, Table IV acceptance columns | `python -m eval.tiered_operating_point` | `eval/tiered_operating_point.json` |
+| Repair audit, development vs held-out action classes | `python -m eval.verifier_repair_audit` | `eval/verifier_repair_audit.json` |
 | Table III, quorum × verifier combined | `python -m decorrelation.canonical_quorums` | `decorrelation/canonical_quorums.json` |
 | Complete certificate overhead, 918 + 6795q bytes, R²=1.0000 | `python -m eval.cert_scaling` | `eval/cert_scaling.json` |
 | Fault matrix, 486 trials with honest controls | `python -m eval.fault_injection` | `eval/fault_injection.json` |
@@ -88,9 +91,18 @@ checking at one configuration and concerns certificate formation, not semantic s
 
 **Three verifier claims that are easy to conflate**, separated deliberately in the paper:
 *rule conformance* is the 42-case suite written alongside the rules, a regression test and not a
-generalization benchmark; *coverage* is the held-out claim, repaired against ten action classes without
-inspecting the other nine; *combined effectiveness* is Table III. The context matrix result (34/54) is
-reported **unrepaired**, since repairing held-out classes and re-reporting would fit the test set.
+generalization benchmark; *coverage* is the sealed Audit Set 2 result; *combined effectiveness* is the
+quorum-by-verifier table.
+
+The audit sets are not interchangeable, and an earlier version of this guide reported the wrong one.
+Audit Set 1 is the 54-case context matrix. Its pre-repair score of 34 of 54 with 20 false permits is
+what motivated the fail-safe repair, so its post-repair score of 51 of 54 is **in-sample and
+diagnostic** — it cannot be read as coverage. Audit Set 2 is generated over 25 devices appearing in
+neither the rule set nor Audit Set 1, with every expected decision fixed from policy intent before the
+engine runs. Its 140 of 150 is the coverage number the paper reports.
+
+Reproducing Audit Set 2 requires the committed `agent/guard/verifier.rego`. The bundle is the input to
+this measurement, so a modified working tree will produce a different score.
 
 ### Constrained-platform measurement
 

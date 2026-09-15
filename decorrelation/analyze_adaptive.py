@@ -1,4 +1,4 @@
-"""Adaptive-attacker analysis over the deployable pool (IoT-J revision, reviewer C2).
+"""Adaptive-attacker analysis over the deployable pool (earlier revision, reviewer C2).
 
 Answers the objection the non-adaptive corpus raises against the paper's own design: a training-selected
 agent reaches 0% attack success at full utility there, which would imply agent selection solves the

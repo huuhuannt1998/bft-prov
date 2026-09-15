@@ -1,0 +1,627 @@
+{
+  "meta": {
+    "seed": 20260801,
+    "k_sets": 200,
+    "n_boot": 1000,
+    "n_dev_attacks": 162,
+    "n_heldout_attacks": 180,
+    "n_dev_legit": 84,
+    "n_heldout_legit": 84,
+    "metric": "LAAR = legitimate action acceptance rate on held-out benign requests",
+    "note": "data-driven selection sees development attacks and development legitimate tasks only; all reported values are held-out on both axes"
+  },
+  "rows": [
+    {
+      "composition": "homogeneous",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.248272633744856,
+      "asr_ci": [
+        0.1978677726337449,
+        0.2977879372427983
+      ],
+      "laar": 0.7271913580246913,
+      "laar_ci": [
+        0.6756426917989417,
+        0.77942791005291
+      ]
+    },
+    {
+      "composition": "homogeneous",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.19178875171467763,
+      "asr_ci": [
+        0.15012273662551437,
+        0.23786243141289437
+      ],
+      "laar": 0.6995296884185773,
+      "laar_ci": [
+        0.6461646274250441,
+        0.7500059523809524
+      ]
+    },
+    {
+      "composition": "homogeneous",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.24546441091297058,
+      "asr_ci": [
+        0.19765099387796575,
+        0.293841892432556
+      ],
+      "laar": 0.7125356816251879,
+      "laar_ci": [
+        0.6571501731007903,
+        0.7615186226239468
+      ]
+    },
+    {
+      "composition": "homogeneous",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.22299032159731752,
+      "asr_ci": [
+        0.18004435585276632,
+        0.2680817453513184
+      ],
+      "laar": 0.7113879090730941,
+      "laar_ci": [
+        0.6544879298941798,
+        0.7642730685381148
+      ]
+    },
+    {
+      "composition": "same-family-diff-size",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.23044444444444445,
+      "asr_ci": [
+        0.18159868827160494,
+        0.27743117283950613
+      ],
+      "laar": 0.7779761904761905,
+      "laar_ci": [
+        0.7273794642857142,
+        0.8274494047619048
+      ]
+    },
+    {
+      "composition": "same-family-diff-size",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.26959670781893,
+      "asr_ci": [
+        0.22133240740740742,
+        0.31969236111111105
+      ],
+      "laar": 0.7482208994708994,
+      "laar_ci": [
+        0.6952682429453262,
+        0.7989031084656084
+      ]
+    },
+    {
+      "composition": "same-family-diff-size",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.24218034598384394,
+      "asr_ci": [
+        0.19557980586038715,
+        0.29321942825026676
+      ],
+      "laar": 0.7802976190476191,
+      "laar_ci": [
+        0.7331473214285714,
+        0.8284017857142857
+      ]
+    },
+    {
+      "composition": "same-family-diff-size",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.14055681298582534,
+      "asr_ci": [
+        0.10129701931870141,
+        0.18410323216735255
+      ],
+      "laar": 0.6414858906525573,
+      "laar_ci": [
+        0.5906088881540269,
+        0.6938043981481481
+      ]
+    },
+    {
+      "composition": "family-diverse",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.15658333333333335,
+      "asr_ci": [
+        0.12085856481481481,
+        0.19262476851851854
+      ],
+      "laar": 0.820436507936508,
+      "laar_ci": [
+        0.7753824404761904,
+        0.8647217261904762
+      ]
+    },
+    {
+      "composition": "family-diverse",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.1333888888888889,
+      "asr_ci": [
+        0.10332800925925925,
+        0.16917916666666663
+      ],
+      "laar": 0.8714880952380952,
+      "laar_ci": [
+        0.8333511904761906,
+        0.9066488095238097
+      ]
+    },
+    {
+      "composition": "family-diverse",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.10012551440329218,
+      "asr_ci": [
+        0.07363256172839508,
+        0.12909284979423868
+      ],
+      "laar": 0.8965013227513228,
+      "laar_ci": [
+        0.8648194444444445,
+        0.9252455357142857
+      ]
+    },
+    {
+      "composition": "family-diverse",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.02502469135802469,
+      "asr_ci": [
+        0.0153875,
+        0.03650038580246913
+      ],
+      "laar": 0.7248875661375661,
+      "laar_ci": [
+        0.6718249007936508,
+        0.7751593915343915
+      ]
+    },
+    {
+      "composition": "defense-diverse",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.2648487654320988,
+      "asr_ci": [
+        0.21874182098765432,
+        0.31844575617283954
+      ],
+      "laar": 0.7594907407407407,
+      "laar_ci": [
+        0.708568783068783,
+        0.8088640873015874
+      ]
+    },
+    {
+      "composition": "defense-diverse",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.2755432098765432,
+      "asr_ci": [
+        0.2238189814814815,
+        0.3288989197530864
+      ],
+      "laar": 0.7812433862433862,
+      "laar_ci": [
+        0.729781746031746,
+        0.8291344246031747
+      ]
+    },
+    {
+      "composition": "defense-diverse",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.19874897119341564,
+      "asr_ci": [
+        0.15759753086419753,
+        0.24285843621399175
+      ],
+      "laar": 0.7718033509700176,
+      "laar_ci": [
+        0.7259477513227512,
+        0.8220977182539683
+      ]
+    },
+    {
+      "composition": "defense-diverse",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.1998127572016461,
+      "asr_ci": [
+        0.15853198731138546,
+        0.24244433299039778
+      ],
+      "laar": 0.7448949147560259,
+      "laar_ci": [
+        0.6884407150205761,
+        0.794586493239271
+      ]
+    },
+    {
+      "composition": "joint-diverse",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.17982407407407408,
+      "asr_ci": [
+        0.13887893518518515,
+        0.22085601851851855
+      ],
+      "laar": 0.8320634920634922,
+      "laar_ci": [
+        0.7904107142857143,
+        0.8702782738095237
+      ]
+    },
+    {
+      "composition": "joint-diverse",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.12524074074074074,
+      "asr_ci": [
+        0.09547430555555554,
+        0.1561909722222222
+      ],
+      "laar": 0.9178571428571428,
+      "laar_ci": [
+        0.8902901785714286,
+        0.9438566468253969
+      ]
+    },
+    {
+      "composition": "joint-diverse",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.08643209876543209,
+      "asr_ci": [
+        0.061791898148148144,
+        0.11597453703703703
+      ],
+      "laar": 0.9150396825396825,
+      "laar_ci": [
+        0.8823740079365079,
+        0.9422752976190476
+      ]
+    },
+    {
+      "composition": "joint-diverse",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.0188179012345679,
+      "asr_ci": [
+        0.010338966049382716,
+        0.028204861111111108
+      ],
+      "laar": 0.7385515873015873,
+      "laar_ci": [
+        0.6880292658730158,
+        0.7871428571428571
+      ]
+    },
+    {
+      "composition": "random",
+      "N": 3,
+      "q": 2,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.13622839506172837,
+      "asr_ci": [
+        0.10373449074074075,
+        0.17322291666666664
+      ],
+      "laar": 0.8079365079365078,
+      "laar_ci": [
+        0.7644454365079365,
+        0.8485165343915344
+      ]
+    },
+    {
+      "composition": "random",
+      "N": 5,
+      "q": 3,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.11575617283950618,
+      "asr_ci": [
+        0.08728449074074075,
+        0.15066003086419755
+      ],
+      "laar": 0.8917085537918872,
+      "laar_ci": [
+        0.8594544201940035,
+        0.9254291776895943
+      ]
+    },
+    {
+      "composition": "random",
+      "N": 7,
+      "q": 4,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.09404115226337449,
+      "asr_ci": [
+        0.07003960905349794,
+        0.120480195473251
+      ],
+      "laar": 0.9050264550264551,
+      "laar_ci": [
+        0.8748409391534392,
+        0.9332123015873016
+      ]
+    },
+    {
+      "composition": "random",
+      "N": 7,
+      "q": 5,
+      "data_driven": false,
+      "n_member_sets": 200,
+      "asr": 0.04021296296296296,
+      "asr_ci": [
+        0.02609050925925926,
+        0.059320833333333337
+      ],
+      "laar": 0.7617416225749559,
+      "laar_ci": [
+        0.7139937169312168,
+        0.8076630291005292
+      ]
+    },
+    {
+      "composition": "lowest-ASR",
+      "N": 3,
+      "q": 2,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "lowest-ASR",
+      "N": 5,
+      "q": 3,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "lowest-ASR",
+      "N": 7,
+      "q": 4,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 0.9166666666666666,
+      "laar_ci": [
+        0.8452380952380952,
+        0.9761904761904762
+      ]
+    },
+    {
+      "composition": "lowest-ASR",
+      "N": 7,
+      "q": 5,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 0.7976190476190477,
+      "laar_ci": [
+        0.7023809523809523,
+        0.8809523809523809
+      ]
+    },
+    {
+      "composition": "best-security-utility",
+      "N": 3,
+      "q": 2,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "best-security-utility",
+      "N": 5,
+      "q": 3,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "best-security-utility",
+      "N": 7,
+      "q": 4,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "best-security-utility",
+      "N": 7,
+      "q": 5,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "max-diversity",
+      "N": 3,
+      "q": 2,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "max-diversity",
+      "N": 5,
+      "q": 3,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "max-diversity",
+      "N": 7,
+      "q": 4,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 1.0,
+      "laar_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "composition": "max-diversity",
+      "N": 7,
+      "q": 5,
+      "data_driven": true,
+      "n_member_sets": 1,
+      "asr": 0.0,
+      "asr_ci": [
+        0.0,
+        0.0
+      ],
+      "laar": 0.9047619047619048,
+      "laar_ci": [
+        0.8333333333333334,
+        0.9642857142857143
+      ]
+    }
+  ]
+}

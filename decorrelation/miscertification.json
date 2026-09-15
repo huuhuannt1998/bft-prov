@@ -1,0 +1,26 @@
+{
+ "note": "policies whose marginal-independence prediction meets an ASR budget but whose observed rate does not",
+ "source": "decorrelation/quorum_analysis.json quorum grid",
+ "rows": [
+  {
+   "budget_pct": 0.5,
+   "certified": 37,
+   "failed": 1
+  },
+  {
+   "budget_pct": 1.0,
+   "certified": 42,
+   "failed": 5
+  },
+  {
+   "budget_pct": 2.0,
+   "certified": 54,
+   "failed": 8
+  },
+  {
+   "budget_pct": 5.0,
+   "certified": 55,
+   "failed": 0
+  }
+ ]
+}
