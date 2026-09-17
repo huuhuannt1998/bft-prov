@@ -22,7 +22,6 @@ built on the result.
 | Certificate overhead, faults, verifier evaluation | `eval/` |
 | Constrained-platform benchmark | `edge/bench_gateway.py`, `edge/Dockerfile.constrained` |
 | Machine-checked domain-coverage model | `formal/tla/DomainCoverage.tla` |
-| Manuscript and supplementary sources | `manuscripts/` |
 
 `ARTIFACT.md` maps every number in the paper to the file and command that produces it.
 
@@ -114,6 +113,4 @@ certificate formation, not semantic safety.
 
 ## License
 
-MIT — see `LICENSE`. Third-party files keep their own terms: the ACM `acmart.cls` and
-`ACM-Reference-Format.bst` shipped with the manuscript are distributed by the ACM under the LaTeX
-Project Public License.
+MIT — see `LICENSE`. Manuscript sources are not distributed in this repository.

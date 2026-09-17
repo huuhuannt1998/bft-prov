@@ -114,7 +114,7 @@ python -m edge.bench_gateway --iters 15 --policy-iters 200    # host, for contex
 ```
 
 Results ship as `edge/results_container_full.json`, `edge/results_container_1cpu512m.json` and
-`edge/results_Huans-MacBook-Pro.json`. The contrast the paper draws is constrained container versus
+`edge/results_host.json`. The contrast the paper draws is constrained container versus
 unconstrained container, both at liboqs 0.16.0, so it stays within one software stack. **This is not a
 Raspberry Pi and is never labelled one.** It fixes operating system, instruction set, core count and
 memory, but the underlying cores remain Apple M4 rather than a Cortex-A class part, so it is a

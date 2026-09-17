@@ -14,7 +14,7 @@ Measures, per platform:
   * the full gateway path a committed actuation pays
   * platform identity, CPU count, RAM, and process RSS
 
-Usage: PYTHONPATH=. python3 -m edge.bench_gateway --out edge/results_<host>.json
+Usage: PYTHONPATH=. python3 -m edge.bench_gateway --out edge/results_host.json
 """
 from __future__ import annotations
 
@@ -45,7 +45,9 @@ POLICY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 
 
 def platform_info() -> dict:
-    info = {"node": platform.node(), "system": platform.system(), "machine": platform.machine(),
+    # The host name is deliberately not recorded: it has no measurement value and would
+    # deanonymize an artifact shipped for double-anonymous review.
+    info = {"node": "not-recorded", "system": platform.system(), "machine": platform.machine(),
             "python": platform.python_version(), "processor": platform.processor()}
     try:
         info["cpu_count"] = os.cpu_count()
@@ -276,7 +278,7 @@ def main() -> None:
     print(f"rss: {rss_bytes()/1e6:.1f} MB | benchmark wall time {elapsed:.1f}s")
 
     out = a.out or os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                f"results_{info['node'].split('.')[0]}.json")
+                                "results_host.json")
     with open(out, "w") as f:
         json.dump({"platform": info, "primitive": prim, "certificate": cert, "policy": pol,
                    "rss_bytes": rss_bytes(), "iters": a.iters, "wall_time_s": round(elapsed, 1)},
