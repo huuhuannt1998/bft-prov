@@ -8,9 +8,13 @@ here are load-bearing for the paper's claims and were previously only described:
   public key, declared configuration, and revocation state live in an enrollment `Registry`. Storage
   accounting must therefore separate per-certificate bytes from one-off registry bytes.
 
-* REPLAY IS ENFORCED, NOT ASSUMED.  `CommitStore` is a compare-and-set over (certificate id, nonce,
-  (device, sequence)) with a durable committed set; a second commit of the same certificate fails.
-  The symbolic model's uniqueness restriction is the abstraction of this store, not a substitute.
+* REPLAY IS ENFORCED, NOT ASSUMED, WITHIN A BOUNDED ENVELOPE.  `CommitStore` checks and then records
+  (certificate id, nonce, (device, sequence)); a second commit of the same certificate fails. The
+  check and the record are separate steps over plain in-memory collections with no lock, transaction
+  or persistence, so this is NOT an atomic compare-and-set and the committed set is NOT durable: the
+  property holds for one uninterrupted, serialized process and is lost on restart or under concurrent
+  callers. The symbolic model's uniqueness restriction is the abstraction of this store, not a
+  substitute.
 
 * COVERAGE IS A PREDICATE OVER DECLARED DOMAINS FROM THE REGISTRY, never self-reported by the signer.
   A vote that claims a family the registry does not record for its key is rejected.
@@ -237,9 +241,12 @@ class ReplayRejected(Exception):
 
 
 class CommitStore:
-    """Compare-and-set commit state. This is the mechanism the symbolic model's uniqueness
-    restriction abstracts: a certificate id, its nonce, and its (device, sequence) may each transition
-    to committed at most once."""
+    """Check-then-record commit state -- deliberately NOT described as a compare-and-set, which would
+    name an atomic primitive this does not implement: the membership test and the insertion are
+    separate statements over plain in-memory collections, with no lock, transaction or persistence.
+    The guarantee therefore holds for one uninterrupted, serialized caller and is lost on restart.
+    This is the mechanism the symbolic model's uniqueness restriction abstracts: a certificate id,
+    its nonce, and its (device, sequence) may each transition to committed at most once."""
 
     def __init__(self) -> None:
         self._committed: set[str] = set()
