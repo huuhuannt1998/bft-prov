@@ -1,8 +1,8 @@
-# Correlated Prompt-Injection Failures in LLM-Agent Quorums
+# Correlated failures in replicated LLM agents, and an accountable actuation path
 
-Artifact for the submission *"Correlated Prompt-Injection Failures in LLM-Agent Quorums for
-Accountable Smart-Home Actuation"*, under double-anonymous review at ACM Transactions on Internet of
-Things. Author identification is omitted here for the duration of that review.
+Research artifact for a manuscript currently under double-anonymous review. The manuscript title,
+its venue, and author identification are all omitted here for the duration of that review, so that
+this repository does not link the paper to its authors.
 
 Replicating an LLM agent and requiring a quorum before a high-risk actuation is only as good as the
 assumption that replicas will not approve the same attack. This artifact contains the measurement that
@@ -13,7 +13,7 @@ built on the result.
 
 | Component | Path |
 |---|---|
-| Attack, legitimate-task and control corpora | `decorrelation/corpus_main.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
+| Attack, legitimate-task and control corpora | `decorrelation/corpus_tdsc.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
 | Six prompt-level defenses | `decorrelation/defenses.py` |
 | **Raw per-repetition votes, 78 agents** | `decorrelation/rq1/*.json` |
 | Dependence and quorum analysis | `decorrelation/analyze_quorum.py`, `decorrelation/canonical_quorums.py` |

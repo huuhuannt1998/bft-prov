@@ -1,7 +1,7 @@
 # Artifact Evaluation Guide
 
-Artifact for *"Correlated Prompt-Injection Failures in LLM-Agent Quorums for Accountable Smart-Home
-Actuation"* (submitted to ACM Transactions on Internet of Things). This guide maps each reported number to the file that
+Artifact for a manuscript under double-anonymous review; its title and venue are omitted here so that
+this repository does not identify the authors. This guide maps each reported number to the file that
 holds it and the command that regenerates it. All paths are relative to the repository root; run with
 `export PYTHONPATH=.`.
 
