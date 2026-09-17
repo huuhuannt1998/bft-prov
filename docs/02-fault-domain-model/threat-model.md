@@ -4,11 +4,10 @@
 quorum-policy implementation, formal modeling, manuscript) cites this document rather than
 re-deriving the taxonomy, adversaries, TCB, or dependability goals.
 
-**Source of truth:** this document is self-contained; the internal design note it was derived from is not part of the artifact
-§3–§5 and `manuscripts/IEEE_TDSC_PQ_BFT_Prov_Full_Feedback.md` §7.1, §7.3, §11.4. Where the two
-disagree in wording, the review (`IEEE_TDSC_PQ_BFT_Prov_Full_Feedback.md`) is the authoritative
-source for adversary/goal/TCB language, and the design spec is authoritative for which domains
-are instantiable on this testbed.
+**Source of truth:** this document is self-contained. The internal design note and the external
+review it was derived from are not part of the artifact. Where they disagreed in wording, the
+review was authoritative for adversary, goal and TCB language, and the design spec was
+authoritative for which domains are instantiable on this testbed.
 
 ---
 

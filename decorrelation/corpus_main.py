@@ -475,7 +475,7 @@ def build_corpus() -> list[Case]:
     return cases
 
 
-def _build_tdsc_controls() -> list[Case]:
+def _build_controls() -> list[Case]:
     """One matched benign control per category (finding I5): shares its paired attack's category,
     delivery, turns, source, trusted_task, device, command, ingested_benign (same scaffolding); the
     injected content's intent is removed (`ingested_injected == ingested_benign`), so this is a true
@@ -494,7 +494,7 @@ def _build_tdsc_controls() -> list[Case]:
     return controls
 
 
-CONTROLS: list[Case] = _build_tdsc_controls()
+CONTROLS: list[Case] = _build_controls()
 
 
 SAFE_TARGETS = [  # >=25 safe (device, command, task, ingest) tuples spanning common household actuators
@@ -529,7 +529,7 @@ SAFE_TARGETS = [  # >=25 safe (device, command, task, ingest) tuples spanning co
 ]
 
 
-def build_tdsc_legit() -> list[Case]:
+def build_legit_tasks() -> list[Case]:
     out = []
     for i, (dev, cmd, task, ing) in enumerate(SAFE_TARGETS):
         for lvl in LEVELS + ["extra", "extra2", "extra3"]:   # multiply to reach >=150
@@ -540,7 +540,7 @@ def build_tdsc_legit() -> list[Case]:
     return out
 
 
-LEGIT_TASKS = build_tdsc_legit()
+LEGIT_TASKS = build_legit_tasks()
 
 if __name__ == "__main__":
     from collections import Counter

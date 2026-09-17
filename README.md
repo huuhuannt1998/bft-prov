@@ -13,7 +13,7 @@ built on the result.
 
 | Component | Path |
 |---|---|
-| Attack, legitimate-task and control corpora | `decorrelation/corpus_tdsc.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
+| Attack, legitimate-task and control corpora | `decorrelation/corpus_main.py`, `decorrelation/injections.py`, `decorrelation/controls_expanded.py` |
 | Six prompt-level defenses | `decorrelation/defenses.py` |
 | **Raw per-repetition votes, 78 agents** | `decorrelation/rq1/*.json` |
 | Dependence and quorum analysis | `decorrelation/analyze_quorum.py`, `decorrelation/canonical_quorums.py` |
